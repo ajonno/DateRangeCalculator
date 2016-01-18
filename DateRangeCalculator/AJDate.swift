@@ -15,71 +15,68 @@
 import Foundation
 
 
-class AJDate {
+struct AJDate {
 	
-	private let day: Int
-	private let month: Int
-	private let year: Int
+	let day: Int
+	let month: Int
+	let year: Int
 	
-	let MINIMUM_YEAR: Int = 1000
-	let MAXIMUM_YEAR: Int = 2222
-	
-	
+	//this will return nil, if any of the passed in values were invalid
 	init?(theDay: Int, theMonth: Int, theYear: Int) {
 		
 		self.day = theDay
 		self.month = theMonth
 		self.year = theYear
 		
-		if !isValid(year, month: month, day: day) {
+		if !isDateValid(self.year, month: self.month, day: self.day) {
 			return nil
 		}
 	}
 	
-	func isValid(year: Int, month: Int, day: Int) -> Bool {
-		
-		if year < 0	|| (year < MINIMUM_YEAR || year > MAXIMUM_YEAR)
-		{
-			return false
+	var isLeapYear: Bool {
+		get {
+			return isLeapYear(self.year)
 		}
-		if month < 1 || month > 12	{return false}
-		if day < 1 || day > 31		{return false}
-	
-		switch (month) {
-			case 1: return true
-			case 2: return isLeapYear() ? day <= 29 : day <= 28
-			case 3: return true
-			case 4: return day < 31
-			case 5: return true
-			case 6: return day < 31
-			case 7: return true
-			case 8: return true
-			case 9: return day < 31
-			case 10: return true
-			case 11: return day < 31
-			default: return true		//for Dec
-		}
-	
 	}
 	
-	func isLeapYear() -> Bool {
+	func isLeapYear(year: Int) -> Bool {
 		
-		guard (self.year-2000)%4 == 0 else {
+		guard (year-2000)%4 == 0 else {
 			return false
 		}
 		
-		guard (self.year)%100 != 0 else {
+		guard (year)%100 != 0 else {
 			return false
 		}
 		
-		guard (self.year)%400 == 0 else {
+		guard (year)%400 == 0 else {
 			return true
 		}
 		
 		return false
 	}
-
 	
+	func isDateValid(year: Int, month: Int, day: Int) -> Bool {
+		
+		if year < 0					{return false}
+		if month < 1 || month > 12	{return false}
+		if day < 1 || day > 31		{return false}
+		
+		switch (month) {
+		case 1: return true
+		case 2: return isLeapYear(year) ? day <= 29 : day <= 28
+		case 3: return true
+		case 4: return day < 31
+		case 5: return true
+		case 6: return day < 31
+		case 7: return true
+		case 8: return true
+		case 9: return day < 31
+		case 10: return true
+		case 11: return day < 31
+		default: return true		//for Dec
+		}
+		
+	}
 	
-
 }

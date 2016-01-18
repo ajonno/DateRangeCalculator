@@ -13,32 +13,32 @@ class DateRangeCalculatorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-		
-		
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
-    func testIsTheYearALeapYear() {
+	
+	
+	func testTheDateIsAValidDate() {
 		
 		let theDate = AJDate(theDay: 1, theMonth: 1, theYear: 2000)
-		XCTAssertEqual(false, theDate?.isLeapYear())
+		XCTAssertEqual(true, theDate != nil)
+
+		let theDate2 = AJDate(theDay: 21, theMonth: 14, theYear: 2016)
+		XCTAssertEqual(true, theDate2 == nil)
+
+	}
+	
+	
+    func testIsTheYearALeapYear() {
+		
+		let theDate = AJDate(theDay: 1, theMonth: 1, theYear: 2004)
+		XCTAssertEqual(true, theDate?.isLeapYear)
+
+		let newDate = AJDate(theDay: 1, theMonth: 1, theYear: 2000)
+		XCTAssertEqual(false, newDate?.isLeapYear)
     }
 	
-	
-	
-	
-	
-	
-//    func testPerformanceExample() {
-//        // This is an example of a performance test case.
-//        self.measureBlock {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
 	
 }
