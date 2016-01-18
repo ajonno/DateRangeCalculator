@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF3E29C81C4CB5C700EAC626 /* AJDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3E29C71C4CB5C700EAC626 /* AJDate.swift */; };
 		EFAAF4DD1C4CB19F00DEA4D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAF4DC1C4CB19F00DEA4D5 /* AppDelegate.swift */; };
 		EFAAF4DF1C4CB19F00DEA4D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAF4DE1C4CB19F00DEA4D5 /* ViewController.swift */; };
 		EFAAF4E21C4CB19F00DEA4D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFAAF4E01C4CB19F00DEA4D5 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF3E29C71C4CB5C700EAC626 /* AJDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJDate.swift; sourceTree = "<group>"; };
 		EFAAF4D91C4CB19F00DEA4D5 /* DateRangeCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateRangeCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFAAF4DC1C4CB19F00DEA4D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFAAF4DE1C4CB19F00DEA4D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				EFAAF4E31C4CB19F00DEA4D5 /* Assets.xcassets */,
 				EFAAF4E51C4CB19F00DEA4D5 /* LaunchScreen.storyboard */,
 				EFAAF4E81C4CB19F00DEA4D5 /* Info.plist */,
+				EF3E29C71C4CB5C700EAC626 /* AJDate.swift */,
 			);
 			path = DateRangeCalculator;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFAAF4DF1C4CB19F00DEA4D5 /* ViewController.swift in Sources */,
+				EF3E29C81C4CB5C700EAC626 /* AJDate.swift in Sources */,
 				EFAAF4DD1C4CB19F00DEA4D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -388,6 +392,7 @@
 				EFAAF4F81C4CB19F00DEA4D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EFAAF4F91C4CB19F00DEA4D5 /* Build configuration list for PBXNativeTarget "DateRangeCalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -396,6 +401,7 @@
 				EFAAF4FB1C4CB19F00DEA4D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

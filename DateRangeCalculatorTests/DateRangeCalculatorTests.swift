@@ -14,6 +14,8 @@ class DateRangeCalculatorTests: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+		
+		
     }
     
     override func tearDown() {
@@ -21,16 +23,22 @@ class DateRangeCalculatorTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testIsTheYearALeapYear() {
 		
-		//XCTAssert(<#T##expression: BooleanType##BooleanType#>)
+		let theDate = AJDate(theDay: 1, theMonth: 1, theYear: 2000)
+		XCTAssertEqual(false, theDate?.isLeapYear())
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+	
+	
+	
+	
+	
+	
+//    func testPerformanceExample() {
+//        // This is an example of a performance test case.
+//        self.measureBlock {
+//            // Put the code you want to measure the time of here.
+//        }
+//    }
+	
 }
