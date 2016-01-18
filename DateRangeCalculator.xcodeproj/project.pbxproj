@@ -1,0 +1,403 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EFAAF4DD1C4CB19F00DEA4D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAF4DC1C4CB19F00DEA4D5 /* AppDelegate.swift */; };
+		EFAAF4DF1C4CB19F00DEA4D5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAF4DE1C4CB19F00DEA4D5 /* ViewController.swift */; };
+		EFAAF4E21C4CB19F00DEA4D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFAAF4E01C4CB19F00DEA4D5 /* Main.storyboard */; };
+		EFAAF4E41C4CB19F00DEA4D5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFAAF4E31C4CB19F00DEA4D5 /* Assets.xcassets */; };
+		EFAAF4E71C4CB19F00DEA4D5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFAAF4E51C4CB19F00DEA4D5 /* LaunchScreen.storyboard */; };
+		EFAAF4F21C4CB19F00DEA4D5 /* DateRangeCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAF4F11C4CB19F00DEA4D5 /* DateRangeCalculatorTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EFAAF4EE1C4CB19F00DEA4D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFAAF4D11C4CB19F00DEA4D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFAAF4D81C4CB19F00DEA4D5;
+			remoteInfo = DateRangeCalculator;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EFAAF4D91C4CB19F00DEA4D5 /* DateRangeCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateRangeCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFAAF4DC1C4CB19F00DEA4D5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EFAAF4DE1C4CB19F00DEA4D5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EFAAF4E11C4CB19F00DEA4D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EFAAF4E31C4CB19F00DEA4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EFAAF4E61C4CB19F00DEA4D5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EFAAF4E81C4CB19F00DEA4D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFAAF4ED1C4CB19F00DEA4D5 /* DateRangeCalculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DateRangeCalculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFAAF4F11C4CB19F00DEA4D5 /* DateRangeCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRangeCalculatorTests.swift; sourceTree = "<group>"; };
+		EFAAF4F31C4CB19F00DEA4D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EFAAF4D61C4CB19F00DEA4D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFAAF4EA1C4CB19F00DEA4D5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EFAAF4D01C4CB19F00DEA4D5 = {
+			isa = PBXGroup;
+			children = (
+				EFAAF4DB1C4CB19F00DEA4D5 /* DateRangeCalculator */,
+				EFAAF4F01C4CB19F00DEA4D5 /* DateRangeCalculatorTests */,
+				EFAAF4DA1C4CB19F00DEA4D5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EFAAF4DA1C4CB19F00DEA4D5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EFAAF4D91C4CB19F00DEA4D5 /* DateRangeCalculator.app */,
+				EFAAF4ED1C4CB19F00DEA4D5 /* DateRangeCalculatorTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EFAAF4DB1C4CB19F00DEA4D5 /* DateRangeCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				EFAAF4DC1C4CB19F00DEA4D5 /* AppDelegate.swift */,
+				EFAAF4DE1C4CB19F00DEA4D5 /* ViewController.swift */,
+				EFAAF4E01C4CB19F00DEA4D5 /* Main.storyboard */,
+				EFAAF4E31C4CB19F00DEA4D5 /* Assets.xcassets */,
+				EFAAF4E51C4CB19F00DEA4D5 /* LaunchScreen.storyboard */,
+				EFAAF4E81C4CB19F00DEA4D5 /* Info.plist */,
+			);
+			path = DateRangeCalculator;
+			sourceTree = "<group>";
+		};
+		EFAAF4F01C4CB19F00DEA4D5 /* DateRangeCalculatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				EFAAF4F11C4CB19F00DEA4D5 /* DateRangeCalculatorTests.swift */,
+				EFAAF4F31C4CB19F00DEA4D5 /* Info.plist */,
+			);
+			path = DateRangeCalculatorTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EFAAF4D81C4CB19F00DEA4D5 /* DateRangeCalculator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFAAF4F61C4CB19F00DEA4D5 /* Build configuration list for PBXNativeTarget "DateRangeCalculator" */;
+			buildPhases = (
+				EFAAF4D51C4CB19F00DEA4D5 /* Sources */,
+				EFAAF4D61C4CB19F00DEA4D5 /* Frameworks */,
+				EFAAF4D71C4CB19F00DEA4D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DateRangeCalculator;
+			productName = DateRangeCalculator;
+			productReference = EFAAF4D91C4CB19F00DEA4D5 /* DateRangeCalculator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EFAAF4EC1C4CB19F00DEA4D5 /* DateRangeCalculatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFAAF4F91C4CB19F00DEA4D5 /* Build configuration list for PBXNativeTarget "DateRangeCalculatorTests" */;
+			buildPhases = (
+				EFAAF4E91C4CB19F00DEA4D5 /* Sources */,
+				EFAAF4EA1C4CB19F00DEA4D5 /* Frameworks */,
+				EFAAF4EB1C4CB19F00DEA4D5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFAAF4EF1C4CB19F00DEA4D5 /* PBXTargetDependency */,
+			);
+			name = DateRangeCalculatorTests;
+			productName = DateRangeCalculatorTests;
+			productReference = EFAAF4ED1C4CB19F00DEA4D5 /* DateRangeCalculatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EFAAF4D11C4CB19F00DEA4D5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Angus Johnston";
+				TargetAttributes = {
+					EFAAF4D81C4CB19F00DEA4D5 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+					EFAAF4EC1C4CB19F00DEA4D5 = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = EFAAF4D81C4CB19F00DEA4D5;
+					};
+				};
+			};
+			buildConfigurationList = EFAAF4D41C4CB19F00DEA4D5 /* Build configuration list for PBXProject "DateRangeCalculator" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EFAAF4D01C4CB19F00DEA4D5;
+			productRefGroup = EFAAF4DA1C4CB19F00DEA4D5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EFAAF4D81C4CB19F00DEA4D5 /* DateRangeCalculator */,
+				EFAAF4EC1C4CB19F00DEA4D5 /* DateRangeCalculatorTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EFAAF4D71C4CB19F00DEA4D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFAAF4E71C4CB19F00DEA4D5 /* LaunchScreen.storyboard in Resources */,
+				EFAAF4E41C4CB19F00DEA4D5 /* Assets.xcassets in Resources */,
+				EFAAF4E21C4CB19F00DEA4D5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFAAF4EB1C4CB19F00DEA4D5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EFAAF4D51C4CB19F00DEA4D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFAAF4DF1C4CB19F00DEA4D5 /* ViewController.swift in Sources */,
+				EFAAF4DD1C4CB19F00DEA4D5 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFAAF4E91C4CB19F00DEA4D5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFAAF4F21C4CB19F00DEA4D5 /* DateRangeCalculatorTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EFAAF4EF1C4CB19F00DEA4D5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFAAF4D81C4CB19F00DEA4D5 /* DateRangeCalculator */;
+			targetProxy = EFAAF4EE1C4CB19F00DEA4D5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EFAAF4E01C4CB19F00DEA4D5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFAAF4E11C4CB19F00DEA4D5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EFAAF4E51C4CB19F00DEA4D5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFAAF4E61C4CB19F00DEA4D5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EFAAF4F41C4CB19F00DEA4D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EFAAF4F51C4CB19F00DEA4D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EFAAF4F71C4CB19F00DEA4D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DateRangeCalculator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bcgdigital.DateRangeCalculator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		EFAAF4F81C4CB19F00DEA4D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DateRangeCalculator/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bcgdigital.DateRangeCalculator;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		EFAAF4FA1C4CB19F00DEA4D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DateRangeCalculatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bcgdigital.DateRangeCalculatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateRangeCalculator.app/DateRangeCalculator";
+			};
+			name = Debug;
+		};
+		EFAAF4FB1C4CB19F00DEA4D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DateRangeCalculatorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bcgdigital.DateRangeCalculatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DateRangeCalculator.app/DateRangeCalculator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EFAAF4D41C4CB19F00DEA4D5 /* Build configuration list for PBXProject "DateRangeCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFAAF4F41C4CB19F00DEA4D5 /* Debug */,
+				EFAAF4F51C4CB19F00DEA4D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFAAF4F61C4CB19F00DEA4D5 /* Build configuration list for PBXNativeTarget "DateRangeCalculator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFAAF4F71C4CB19F00DEA4D5 /* Debug */,
+				EFAAF4F81C4CB19F00DEA4D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EFAAF4F91C4CB19F00DEA4D5 /* Build configuration list for PBXNativeTarget "DateRangeCalculatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFAAF4FA1C4CB19F00DEA4D5 /* Debug */,
+				EFAAF4FB1C4CB19F00DEA4D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EFAAF4D11C4CB19F00DEA4D5 /* Project object */;
+}
