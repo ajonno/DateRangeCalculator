@@ -17,9 +17,12 @@ import Foundation
 
 struct AJDate {
 	
-	let day: Int
-	let month: Int
-	let year: Int
+	private(set) var day: Int
+	private(set) var month: Int
+	private(set) var year: Int
+	
+	let MINIMUM_YEAR: Int = 1901
+ 	let MAXIMUM_YEAR: Int = 2999
 	
 	//this will return nil, if any of the passed in values were invalid
 	init?(theDay: Int, theMonth: Int, theYear: Int) {
@@ -38,6 +41,13 @@ struct AJDate {
 			return isLeapYear(self.year)
 		}
 	}
+
+	var numberOfDaysInYear: Int {
+		get {
+			return numberOfDaysInYear(self.year)
+		}
+	}
+
 	
 	func isLeapYear(year: Int) -> Bool {
 		
@@ -58,9 +68,9 @@ struct AJDate {
 	
 	func isDateValid(year: Int, month: Int, day: Int) -> Bool {
 		
-		if year < 0					{return false}
-		if month < 1 || month > 12	{return false}
-		if day < 1 || day > 31		{return false}
+		if year < 0	|| (year < MINIMUM_YEAR || year > MAXIMUM_YEAR) {return false}
+		if month < 1 || month > 12		{return false}
+		if day < 1 || day > 31			{return false}
 		
 		switch (month) {
 		case 1: return true
@@ -76,7 +86,10 @@ struct AJDate {
 		case 11: return day < 31
 		default: return true		//for Dec
 		}
-		
+	}
+	
+	func numberOfDaysInYear(theYear: Int) -> Int {
+		return isLeapYear(theYear) ? 366 : 365
 	}
 	
 }

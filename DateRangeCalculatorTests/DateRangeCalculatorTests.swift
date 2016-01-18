@@ -25,11 +25,27 @@ class DateRangeCalculatorTests: XCTestCase {
 		let theDate = AJDate(theDay: 1, theMonth: 1, theYear: 2000)
 		XCTAssertEqual(true, theDate != nil)
 
-		let theDate2 = AJDate(theDay: 21, theMonth: 14, theYear: 2016)
-		XCTAssertEqual(true, theDate2 == nil)
+		let anotherDate = AJDate(theDay: 35, theMonth: 14, theYear: 2016)
+		XCTAssertEqual(true, anotherDate == nil)
 
 	}
-	
+
+	func testTheYearIsValidBasedOnMinMaxValues() {
+		
+		//min = 01 Jan 1901
+		//max = 31 Dec 2999
+		
+		let validDate = AJDate(theDay: 1, theMonth: 1, theYear: 1901)
+		XCTAssertEqual(false, validDate == nil)
+		
+		let theDate = AJDate(theDay: 1, theMonth: 1, theYear: 1900)
+		XCTAssertEqual(true, theDate == nil)
+		
+		let anotherDate = AJDate(theDay: 1, theMonth: 1, theYear: 3000)
+		XCTAssertEqual(true, anotherDate == nil)
+		
+		
+	}
 	
     func testIsTheYearALeapYear() {
 		
@@ -39,6 +55,26 @@ class DateRangeCalculatorTests: XCTestCase {
 		let newDate = AJDate(theDay: 1, theMonth: 1, theYear: 2000)
 		XCTAssertEqual(false, newDate?.isLeapYear)
     }
+	
+	func testNumberOfDaysInAYearIsCorrect() {
+		
+		//LEAP year
+		let theDate = AJDate(theDay: 1, theMonth: 1, theYear: 2016)
+		if let theDate = theDate {
+			XCTAssertEqual(366, theDate.numberOfDaysInYear)
+		}
+		
+		//non-leap year
+		let anotherDate = AJDate(theDay: 1, theMonth: 1, theYear: 2001)
+		if let anotherDate = anotherDate {
+			XCTAssertEqual(365, anotherDate.numberOfDaysInYear)
+		}
+	}
+	
+	
+	
+	
+	
 	
 	
 }
