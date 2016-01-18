@@ -71,7 +71,22 @@ class DateRangeCalculatorTests: XCTestCase {
 		}
 	}
 	
+	func testNumberOfDaysInAMonthIsCorrect() {
 	
+		//requires the month and the year (since it could be a leap year)
+		let aDate = AJDate(theDay: 21, theMonth: 5, theYear: 1998)
+		if let aDate = aDate {
+			XCTAssertEqual(31, aDate.numberOfDaysInMonth)
+			XCTAssertNotEqual(30, aDate.numberOfDaysInMonth)
+		}
+		
+		//requires the month and the year (since it could be a leap year)
+		let anotherDate = AJDate(theDay: 21, theMonth: 2, theYear: 2004)
+		if let anotherDate = anotherDate {
+			XCTAssertEqual(29, anotherDate.numberOfDaysInMonth)
+			XCTAssertNotEqual(28, anotherDate.numberOfDaysInMonth)
+		}
+	}
 	
 	
 	
