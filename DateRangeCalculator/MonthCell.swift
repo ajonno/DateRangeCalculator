@@ -1,5 +1,5 @@
 //
-//  DayCell.swift
+//  MonthCell.swift
 //  DateRangeCalculator
 //
 //  Created by Angus Johnston on 19/01/2016.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class DayCell: UICollectionViewCell {
-	
-	@IBOutlet weak var dayLabel: UILabel!
+class MonthCell: UICollectionViewCell {
+
+    @IBOutlet weak var monthLabel: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -19,5 +19,6 @@ class DayCell: UICollectionViewCell {
         self.layer.cornerRadius = 7
         
     }
+
     
 }

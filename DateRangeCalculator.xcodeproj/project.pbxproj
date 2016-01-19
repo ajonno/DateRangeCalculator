@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF2BEE391C4E605B001B683B /* MonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEE381C4E605B001B683B /* MonthCell.swift */; };
 		EF3E29C81C4CB5C700EAC626 /* AJDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3E29C71C4CB5C700EAC626 /* AJDate.swift */; };
 		EF74B2741C4E487800EF60F3 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74B2731C4E487800EF60F3 /* DayCell.swift */; };
 		EFAAF4DD1C4CB19F00DEA4D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAF4DC1C4CB19F00DEA4D5 /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF2BEE381C4E605B001B683B /* MonthCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCell.swift; sourceTree = "<group>"; };
 		EF3E29C71C4CB5C700EAC626 /* AJDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJDate.swift; sourceTree = "<group>"; };
 		EF74B2731C4E487800EF60F3 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		EFAAF4D91C4CB19F00DEA4D5 /* DateRangeCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateRangeCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +91,7 @@
 				EFAAF4E81C4CB19F00DEA4D5 /* Info.plist */,
 				EF3E29C71C4CB5C700EAC626 /* AJDate.swift */,
 				EF74B2731C4E487800EF60F3 /* DayCell.swift */,
+				EF2BEE381C4E605B001B683B /* MonthCell.swift */,
 			);
 			path = DateRangeCalculator;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF2BEE391C4E605B001B683B /* MonthCell.swift in Sources */,
 				EFAAF4DF1C4CB19F00DEA4D5 /* ViewController.swift in Sources */,
 				EF3E29C81C4CB5C700EAC626 /* AJDate.swift in Sources */,
 				EF74B2741C4E487800EF60F3 /* DayCell.swift in Sources */,
