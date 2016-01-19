@@ -29,10 +29,15 @@ class ViewController: UIViewController {
 		
         dayCollectionView.dataSource = self
         dayCollectionView.delegate = self
+        
+        
+        dayCollectionView.layer.cornerRadius = 5
 
         monthCollectionView.dataSource = self
         monthCollectionView.delegate = self
 
+        monthCollectionView.layer.masksToBounds = true
+        monthCollectionView.layer.cornerRadius = 4
         
 	}
 
