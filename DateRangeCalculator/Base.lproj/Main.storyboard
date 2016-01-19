@@ -18,63 +18,128 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Na5-Cg-hBg">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hFo-W8-00N">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.47978583920000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DFC-gG-Aao">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="FNI-Xa-hn5"/>
+                                    <constraint firstAttribute="height" constant="56" id="QRH-go-aVw"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="5" id="JNT-Tb-U9k">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="daysInMonthCell" id="LV5-Wr-bLk" customClass="DayCell" customModule="DateRangeCalculator" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="daysInMonthCell" id="IQa-vW-KYR" customClass="DayCell" customModule="DateRangeCalculator" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tmt-wk-1sR">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="42" id="1MG-1X-gad"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="1MG-1X-gad"/>
+                                                        </mask>
+                                                    </variation>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <mask key="constraints">
+                                                            <include reference="1MG-1X-gad"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <color key="backgroundColor" red="1" green="0.58082442325832839" blue="0.50229394115154247" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="Tmt-wk-1sR" firstAttribute="centerX" secondItem="IQa-vW-KYR" secondAttribute="centerX" id="6dd-Y7-iyM"/>
+                                            <constraint firstItem="Tmt-wk-1sR" firstAttribute="centerY" secondItem="IQa-vW-KYR" secondAttribute="centerY" id="mUP-2d-lFF"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="subviews">
+                                                <exclude reference="Tmt-wk-1sR"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <exclude reference="6dd-Y7-iyM"/>
+                                                <exclude reference="mUP-2d-lFF"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=regular-widthClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="Tmt-wk-1sR"/>
+                                            </mask>
+                                            <mask key="constraints">
+                                                <include reference="6dd-Y7-iyM"/>
+                                                <include reference="mUP-2d-lFF"/>
+                                            </mask>
+                                        </variation>
                                     </collectionViewCell>
                                 </cells>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="FNI-Xa-hn5"/>
+                                        <exclude reference="QRH-go-aVw"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="FNI-Xa-hn5"/>
+                                        <include reference="QRH-go-aVw"/>
+                                    </mask>
+                                </variation>
                                 <connections>
-                                    <outlet property="dataSource" destination="8bC-Xf-vdC" id="NYH-pr-t5b"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="1GW-i8-Qb8"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="vcQ-wO-4nK"/>
                                 </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Na5-Cg-hBg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="51w-lw-Dqw"/>
-                            <constraint firstItem="Na5-Cg-hBg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="75" id="fml-Cc-bh8"/>
-                            <constraint firstItem="Na5-Cg-hBg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="60" id="t6t-hM-TLh"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Na5-Cg-hBg" secondAttribute="bottom" constant="649" id="vtD-wh-gaa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hFo-W8-00N" secondAttribute="trailing" constant="49" id="LHS-mg-DYv">
+                                <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                            </constraint>
+                            <constraint firstItem="hFo-W8-00N" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PE5-kc-dvV"/>
+                            <constraint firstItem="hFo-W8-00N" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="71" id="XOW-d3-1Wu">
+                                <variation key="heightClass=regular-widthClass=compact" constant="60"/>
+                            </constraint>
+                            <constraint firstItem="hFo-W8-00N" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="74" id="c57-mK-0zf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="Na5-Cg-hBg"/>
+                                <exclude reference="hFo-W8-00N"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="51w-lw-Dqw"/>
-                                <exclude reference="fml-Cc-bh8"/>
-                                <exclude reference="t6t-hM-TLh"/>
-                                <exclude reference="vtD-wh-gaa"/>
+                                <exclude reference="LHS-mg-DYv"/>
+                                <exclude reference="PE5-kc-dvV"/>
+                                <exclude reference="XOW-d3-1Wu"/>
+                                <exclude reference="c57-mK-0zf"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
-                                <include reference="Na5-Cg-hBg"/>
+                                <include reference="hFo-W8-00N"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="51w-lw-Dqw"/>
-                                <include reference="fml-Cc-bh8"/>
-                                <include reference="t6t-hM-TLh"/>
-                                <include reference="vtD-wh-gaa"/>
+                                <include reference="LHS-mg-DYv"/>
+                                <include reference="PE5-kc-dvV"/>
+                                <include reference="XOW-d3-1Wu"/>
+                                <include reference="c57-mK-0zf"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="dayCollectionView" destination="Na5-Cg-hBg" id="SV4-6a-Uj6"/>
+                        <outlet property="dayCollectionView" destination="hFo-W8-00N" id="L3G-Tt-1hp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
