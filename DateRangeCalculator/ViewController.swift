@@ -1,15 +1,17 @@
 //
-//  ViewController.swift
-//  DateRangeCalculator
-//
-//  Created by Angus Johnston on 18/01/2016.
-//  Copyright © 2016 Angus Johnston. All rights reserved.
-//
-
 import UIKit
 import AVFoundation
 import AVKit
 
+
+
+//*****************************************************************************************************
+//  PLEASE NOTE! I WAS LOW ON TIME TO GET THIS SUBMITTED AND SO PUT ALL UI ELEMENTS AND CODE IN THIS VC.
+//  I WOULD **DEFINITELY**!! REFACTOR THIS CODE UNDER NORMAL CIRCUMSTANCES. 
+//  HOWEVER I WANTED TO GET THIS UI PIECE DONE TO SHOW THAT I WANTED TO 
+//  STAND OUT AND DO SOMETHING FUN AND A BIT DIFFERENT! 😀 (VS. GOOD OLE DATE PICKER..)
+//  IT MIGHT NOT WIN A DESIGN AWARD BUT HEY... ;-)
+//*****************************************************************************************************
 class ViewController: UIViewController {
 
 	
