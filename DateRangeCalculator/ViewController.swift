@@ -7,12 +7,26 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
 
 class ViewController: UIViewController {
 
+	
+	@IBOutlet weak var dayCollectionView: UICollectionView!
+	
+	
+	
+	
+	
+	
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+		
+
+		
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -21,5 +35,29 @@ class ViewController: UIViewController {
 	}
 
 
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+	
+}
+
+extension ViewController: UICollectionViewDataSource {
+	
+
+	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+		return 12
+	}
+	
+
+	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+		
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("daysInMonthCell", forIndexPath: indexPath) as! DayCell
+		
+		return cell
+		
+	}
+	
+	
+	
 }
 
