@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     
 	@IBOutlet weak var dayCollectionView: UICollectionView!
     @IBOutlet weak var monthCollectionView: UICollectionView!
+    @IBOutlet weak var yearCollectionView: UICollectionView!
 	
 	
 	
@@ -29,15 +30,19 @@ class ViewController: UIViewController {
 		
         dayCollectionView.dataSource = self
         dayCollectionView.delegate = self
+        dayCollectionView.layer.masksToBounds = true
+        dayCollectionView.layer.cornerRadius = 4
         
-        
-        dayCollectionView.layer.cornerRadius = 5
-
         monthCollectionView.dataSource = self
         monthCollectionView.delegate = self
-
         monthCollectionView.layer.masksToBounds = true
         monthCollectionView.layer.cornerRadius = 4
+
+        yearCollectionView.dataSource = self
+        yearCollectionView.delegate = self
+        yearCollectionView.layer.masksToBounds = true
+        yearCollectionView.layer.cornerRadius = 4
+
         
 	}
 
