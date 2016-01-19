@@ -15,6 +15,20 @@
 import Foundation
 
 
+enum Month : Int {
+	case Jan = 1
+	case Feb = 2
+	case Mar = 3
+	case Apr = 4
+	case May = 5
+	case Jun = 6
+	case Jul = 7
+	case Aug = 8
+	case Sep = 9
+	case Oct = 10
+	case Nov = 11
+	case Dec = 12
+}
 
 
 struct AJDate {
@@ -22,6 +36,10 @@ struct AJDate {
 	private(set) var day: Int
 	private(set) var month: Int
 	private(set) var year: Int
+	
+	//helper arrays
+	private let gregorianDays = Array(1...31)
+	private let gregorianMonths = Array(1...12)
 	
 	let MINIMUM_YEAR: Int = 1901
  	let MAXIMUM_YEAR: Int = 2999
@@ -53,6 +71,12 @@ struct AJDate {
 	var numberOfDaysInMonth: Int {
 		get {
 			return numberOfDaysInMonth(self.year, theMonth: self.month)
+		}
+	}
+
+	var numberOfDaysUntilEndOfMonth: Int {
+		get {
+			return numberOfDaysUntilEndOfMonth(self.year, fromMonth: self.month, fromDay: self.day)
 		}
 	}
 
@@ -101,7 +125,7 @@ struct AJDate {
 	}
 	
 	func numberOfDaysInMonth(theYear: Int, theMonth: Int) -> Int {
-		switch (month) {
+		switch (theMonth) {
 		case 1: return 31
 		case 2: return isLeapYear(theYear) ? 29 : 28
 		case 3: return 31
@@ -113,8 +137,106 @@ struct AJDate {
 		case 9: return 30
 		case 10: return 31
 		case 11: return 30
-		default: return 31
+		case 12: return 31
+		default: return 0
 		}
+	}
+	
+	func numberOfDaysUntilEndOfMonth(fromYear: Int , fromMonth: Int, fromDay: Int) -> Int {
+		let daysInMonth = numberOfDaysInMonth(fromYear, theMonth: fromMonth)     //numberOfDaysInMonth(month)
+		return daysInMonth - fromDay
+	}
+
+	func numberOfDaysUntilEndOfYear(fromYear: Int, fromMonth: Int, fromDay: Int ) -> Int {
+	
+		//number of days remaining in the fromMonth
+		let daysRemainingInFromMonth = numberOfDaysUntilEndOfMonth(fromYear, fromMonth: fromMonth, fromDay: fromDay)
+		//print("\ndaysRemainingInFromMonth = \(daysRemainingInFromMonth)\n")
+		
+		let allMonthsAfterStartMonth = gregorianMonths.dropFirst(fromMonth)
+		print("\nallMonthsAfterStartMonth = \(allMonthsAfterStartMonth)\n")
+		
+		var totalDaysForAllOtherMonths: Int = 0
+		for month in allMonthsAfterStartMonth {
+			totalDaysForAllOtherMonths += numberOfDaysInMonth(fromYear, theMonth: month)
+		}
+		//print("\ntotalDaysForAllOtherMonths = \(totalDaysForAllOtherMonths)\n")
+		
+		//TODO: this is currently NOT including the fromDay. so vs. web result this is 1 less
+		
+		return daysRemainingInFromMonth + totalDaysForAllOtherMonths
+	}
+	
+	func numberOfDayFromStartOfYearTo(toYear: Int, toMonth: Int, toDay: Int) -> Int {
+		
+		//   1/1/2005 - 31/12/2005		[31, 28, 31 18] = 69
+		
+		//let monthsToCalculateDaysFor = [Jan…toMonth]  EXCLUDE THE **TO** MONTH when building this array
+		let monthsToCalculateDaysFor = gregorianMonths.dropLast(gregorianMonths.count - (toMonth - 1))
+		
+		var totalsDaysForAllMonthsExceptLast: Int = 0
+		for month in monthsToCalculateDaysFor {
+			totalsDaysForAllMonthsExceptLast += numberOfDaysInMonth(toYear, theMonth: month)
+		}
+
+		return totalsDaysForAllMonthsExceptLast + toDay
+	}
+	
+	
+	func numberOfDaysBetween(fromDate: AJDate, toDate: AJDate) -> Int {
+		
+		//TODO: handle backwards dates here too (flip in the array)
+
+		//case 1 - start and end yr/mth are the same
+		if (fromDate.year == toDate.year && fromDate.month == toDate.month) {
+			return toDate.day - fromDate.day
+		}
+		
+		//case 2 - start and end yr are the same, months are different
+		if (fromDate.year == toDate.year) {
+			
+			//calc from(4 July 1984) to (25 Dec 1984) ; sb 173 days
+			
+			let firstMonthDays = fromDate.numberOfDaysUntilEndOfMonth
+			
+			//get in between (if there are any) months total days 
+			let requiredFromToMonths = Array(fromDate.month...toDate.month)
+			
+			var fullMonthsTotal: Int = 0
+			if requiredFromToMonths.count > 2 {
+				let fullMonthElements = requiredFromToMonths.dropFirst().dropLast()
+				for month in fullMonthElements {
+					fullMonthsTotal += numberOfDaysInMonth(fromDate.year, theMonth: month)
+				}
+			}
+			
+			return firstMonthDays + fullMonthsTotal + toDate.day
+		}
+		
+		//case 3 - start and end year are different
+		if (fromDate.year != toDate.year) {
+		
+			//calc from(3 Jan 1989) to (3 Aug 1983) ; sb 1979 days
+
+			
+			
+			
+			
+			
+			
+			
+		}
+
+		return 0
+	}
+	
+	private func calcNumberOfDaysBetweenSameYear(startDate: AJDate, endDate: AJDate) -> Int {
+		
+		let numDaysTillEndOfFirstMonth = startDate.numberOfDaysUntilEndOfMonth
+		
+		
+		
+		return 0
 	}
 	
 	
