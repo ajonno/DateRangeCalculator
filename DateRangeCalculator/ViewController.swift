@@ -7,7 +7,7 @@ import AVKit
 
 //*****************************************************************************************************
 //  PLEASE NOTE! I WAS LOW ON TIME TO GET THIS SUBMITTED AND SO PUT ALL UI ELEMENTS AND CODE IN THIS VC.
-//  I WOULD **DEFINITELY**!! REFACTOR THIS CODE UNDER NORMAL CIRCUMSTANCES. 
+//  I WOULD **DEFINITELY**!! REFACTOR THIS CODE UNDER NORMAL CIRCUMSTANCES
 //  HOWEVER I WANTED TO GET THIS UI PIECE DONE TO SHOW THAT I WANTED TO 
 //  STAND OUT AND DO SOMETHING FUN AND A BIT DIFFERENT! 😀 (VS. GOOD OLE DATE PICKER..)
 //  IT MIGHT NOT WIN A DESIGN AWARD BUT HEY... ;-)
@@ -31,6 +31,7 @@ class ViewController: UIViewController {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
+        
         dayCollectionView.dataSource = self
         dayCollectionView.delegate = self
         dayCollectionView.layer.masksToBounds = true
