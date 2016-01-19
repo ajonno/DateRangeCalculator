@@ -122,13 +122,16 @@ class DateRangeCalculatorTests: XCTestCase {
 		
 		let aDate = AJDate(theDay: 1, theMonth: 10, theYear: 2005)
 		if let aDate = aDate {
-			let daysRemainingInYear = aDate.numberOfDaysUntilEndOfYear(aDate.year, fromMonth: aDate.month, fromDay: aDate.day)
-			XCTAssertEqual(92, daysRemainingInYear)
+			let daysRemainingInYear = aDate.numberOfDaysUntilEndOfYear
+			XCTAssertEqual(91, daysRemainingInYear)
 		}
 
-		//TODO: MORE ASSERTS HERE. NEED TO RESOLVE ISSUE OF NOT COUNTING START AND END DATE FOR THIS APP
-		
-	
+		let anotherDate = AJDate(theDay: 1, theMonth: 12, theYear: 2012)
+		if let anotherDate = anotherDate {
+			let daysRemainingInYear = anotherDate.numberOfDaysUntilEndOfYear
+			XCTAssertEqual(30, daysRemainingInYear)
+		}
+
 	}
 
 	func testTotalDaysFromStartOfYearTo() {
@@ -138,10 +141,6 @@ class DateRangeCalculatorTests: XCTestCase {
 			let daysFromStartOfYearTo = toDate.numberOfDayFromStartOfYearTo(toDate.year, toMonth: toDate.month, toDay: toDate.day)
 			XCTAssertEqual(365, daysFromStartOfYearTo)
 		}
-		
-		//TODO: MORE ASSERTS HERE. NEED TO RESOLVE ISSUE: WE CURRENTLY ARE INCLUDING START AND END DATE FOR THIS APP
-		
-		
 	}
 
 	func test_1_From_Test_Cases() {
@@ -151,10 +150,8 @@ class DateRangeCalculatorTests: XCTestCase {
 		let toDate = AJDate(theDay: 22, theMonth: 6, theYear: 1983)
 		
 		if let fromDate = fromDate , let toDate = toDate {
-			var result = fromDate.numberOfDaysBetween(fromDate, toDate: toDate)
+			let result = fromDate.numberOfDaysBetween(fromDate, toDate: toDate, excludeStartDate: true)
 			XCTAssertEqual(19, result)
-		} else {
-			XCTAssertNil(fromDate)	//TODO: invalid dates test should fail
 		}
 	}
 	
@@ -165,10 +162,8 @@ class DateRangeCalculatorTests: XCTestCase {
 		let toDate = AJDate(theDay: 25, theMonth: 12, theYear: 1984)
 		
 		if let fromDate = fromDate , let toDate = toDate {
-			var result = fromDate.numberOfDaysBetween(fromDate, toDate: toDate)
+			let result = fromDate.numberOfDaysBetween(fromDate, toDate: toDate, excludeStartDate: true)
 			XCTAssertEqual(173, result)
-		} else {
-			XCTAssertNil(fromDate)	//TODO: invalid dates test should fail
 		}
 	}
 
@@ -179,10 +174,21 @@ class DateRangeCalculatorTests: XCTestCase {
 		let toDate = AJDate(theDay: 3, theMonth: 8, theYear: 1983)
 		
 		if let fromDate = fromDate , let toDate = toDate {
-			var result = fromDate.numberOfDaysBetween(fromDate, toDate: toDate)
+			let result = fromDate.numberOfDaysBetween(fromDate, toDate: toDate, excludeStartDate: true)
 			XCTAssertEqual(1979, result)
-		} else {
-			XCTAssertNil(fromDate)	//TODO: invalid dates test should fail
+		}
+	}
+
+	func test_4_From_Test_Cases() {
+		
+		//   07/11/1972 and 08/11/1972 should return 0
+		
+		let fromDate = AJDate(theDay: 7, theMonth: 11, theYear: 1972)	//<!!!!-----
+		let toDate = AJDate(theDay: 8, theMonth: 11, theYear: 1972)
+		
+		if let fromDate = fromDate , let toDate = toDate {
+			let result = fromDate.numberOfDaysBetween(fromDate, toDate: toDate, excludeStartDate: true)
+			XCTAssertEqual(0, result)
 		}
 	}
 

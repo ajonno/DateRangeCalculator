@@ -80,6 +80,19 @@ struct AJDate {
 		}
 	}
 
+	var numberOfDaysUntilEndOfYear: Int {
+		get {
+			return numberOfDaysUntilEndOfYear(self.year, fromMonth: self.month, fromDay: self.day)
+		}
+	}
+
+	var numberOfDaysFromStartOfYear: Int {
+		get {
+			return numberOfDayFromStartOfYearTo(self.year, toMonth: self.month, toDay: self.day)
+		}
+	}
+
+	
 	
 	func isLeapYear(year: Int) -> Bool {
 		
@@ -183,13 +196,17 @@ struct AJDate {
 	}
 	
 	
-	func numberOfDaysBetween(fromDate: AJDate, toDate: AJDate) -> Int {
+	func numberOfDaysBetween(fromDate: AJDate, toDate: AJDate, excludeStartDate: Bool) -> Int {
 		
 		//TODO: handle backwards dates here too (flip in the array)
 
 		//case 1 - start and end yr/mth are the same
 		if (fromDate.year == toDate.year && fromDate.month == toDate.month) {
-			return toDate.day - fromDate.day
+			var finalResult = (toDate.day - fromDate.day)
+			if excludeStartDate {
+				finalResult = (finalResult - 1) < 0 ? 0 : finalResult - 1
+			}
+			return finalResult
 		}
 		
 		//case 2 - start and end yr are the same, months are different
@@ -209,8 +226,8 @@ struct AJDate {
 					fullMonthsTotal += numberOfDaysInMonth(fromDate.year, theMonth: month)
 				}
 			}
-			
-			return firstMonthDays + fullMonthsTotal + toDate.day
+			let finalResult = firstMonthDays + fullMonthsTotal + toDate.day
+			return excludeStartDate ? finalResult - 1 : finalResult
 		}
 		
 		//case 3 - start and end year are different
@@ -218,26 +235,56 @@ struct AJDate {
 		
 			//calc from(3 Jan 1989) to (3 Aug 1983) ; sb 1979 days
 
+			//first make sure the years are in sequence (as per the BCG document - this test case
+			//has reverse date order
+			var confirmedFromDate: AJDate = fromDate
+			var confirmedToDate: AJDate = toDate
 			
+			if !isCorrectDateOrderSequence(fromDate, toDate: toDate) {
+				confirmedFromDate = toDate
+				confirmedToDate = fromDate
+			}
 			
+			//get in between (if there are any) years total days
+			let requiredFromToYears = Array(confirmedFromDate.year...confirmedToDate.year)
 			
+			var inBetweenYearsTotal: Int = 0
+			if requiredFromToYears.count > 2 {
+				let fullYearElements = requiredFromToYears.dropFirst().dropLast()
+				for year in fullYearElements {
+					inBetweenYearsTotal += numberOfDaysInYear(year)
+				}
+			}
 			
+			//now get the first years total days (ie. from start day/mth -> 31 Dec of that same year
+			let firstYearsTotalDays = confirmedFromDate.numberOfDaysUntilEndOfYear
 			
+			//now get the last years total days (ie. from 1 Jan -> end date)
+			let lastYearsTotalDays = confirmedToDate.numberOfDaysFromStartOfYear
 			
-			
+			let finalResult = firstYearsTotalDays + inBetweenYearsTotal + lastYearsTotalDays
+			return excludeStartDate ? finalResult - 1 : finalResult
 		}
-
+		
+		//TODO: no result - what is best way to handle this
 		return 0
 	}
 	
-	private func calcNumberOfDaysBetweenSameYear(startDate: AJDate, endDate: AJDate) -> Int {
-		
-		let numDaysTillEndOfFirstMonth = startDate.numberOfDaysUntilEndOfMonth
-		
-		
-		
-		return 0
+	private func isCorrectDateOrderSequence(fromDate: AJDate, toDate: AJDate) -> Bool {
+		if (fromDate.year > toDate.year) {
+			return false
+		}
+		return true
 	}
+	
+//	private func calcNumberOfDaysBetweenSameYear(startDate: AJDate, endDate: AJDate) -> Int {
+//		
+//		let numDaysTillEndOfFirstMonth = startDate.numberOfDaysUntilEndOfMonth
+//		
+//		
+//		
+//		return 0
+//	}
 	
 	
 }
