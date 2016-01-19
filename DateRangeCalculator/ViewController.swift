@@ -12,7 +12,7 @@ import AVKit
 //  STAND OUT AND DO SOMETHING FUN AND A BIT DIFFERENT! 😀 (VS. GOOD OLE DATE PICKER..)
 //  IT MIGHT NOT WIN A DESIGN AWARD BUT HEY... ;-)
 //*****************************************************************************************************
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
 	
     let daysOfMonth = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
@@ -24,13 +24,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var monthCollectionView: UICollectionView!
     @IBOutlet weak var yearCollectionView: UICollectionView!
 	
+    @IBOutlet weak var fromDay: UILabel!
+    @IBOutlet weak var fromMonth: UILabel!
+    @IBOutlet weak var fromYear: UILabel!
 	
+    @IBOutlet weak var toDay: UILabel!
+    @IBOutlet weak var toMonth: UILabel!
+    @IBOutlet weak var toYear: UILabel!
 	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
+        //add labels to array
+        let labelArray = [fromDay, fromMonth, fromYear, toDay, toMonth, toYear]
         
         dayCollectionView.dataSource = self
         dayCollectionView.delegate = self
@@ -47,8 +55,10 @@ class ViewController: UIViewController {
         yearCollectionView.layer.masksToBounds = true
         yearCollectionView.layer.cornerRadius = 4
 
-        
-        
+        for label in labelArray {
+            let tapGesture = UITapGestureRecognizer(target: self, action: "tappedDateView:")
+            label.addGestureRecognizer(tapGesture)
+        }
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -62,11 +72,84 @@ class ViewController: UIViewController {
         yearCollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredVertically, animated: false)
         
     }
+
+    func tappedDateView(sender:UITapGestureRecognizer){
+        let thelabel = sender.view as! UILabel
+        print("yep \(thelabel.accessibilityIdentifier) value of label is: \(thelabel.text)")
+
+    }
+    
+    @IBOutlet weak var testButton: UIButton!
+    @IBAction func tappedButton(sender: UIButton) {
+        
+        let dmyViewController: PopoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController") as! PopoverViewController
+        
+        
+        
+        // present the controller
+        dmyViewController.modalPresentationStyle = .Popover
+        dmyViewController.preferredContentSize = CGSizeMake(50, 100)
+        
+        // configure the Popover presentation controller
+        let popController = dmyViewController.popoverPresentationController
+        popController!.permittedArrowDirections = .Down
+        popController!.delegate = self
+        
+        //anchor here
+        popController?.sourceView = sender
+        popController?.sourceRect = CGRect(
+            x: 100,
+            y: 400,
+            width: 1,
+            height: 1)
+
+        presentViewController(
+            dmyViewController,
+            animated: true,
+            completion: nil)
+        
+        // in case we don't have a bar button as reference
+//        popController!.sourceView = self.toDay
+       // popController!.sourceRect = CGRectMake(30, 50, 10, 10);
+        
+    }
+   
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "popoverSegue" {
+            let popoverViewController = segue.destinationViewController 
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
+            popoverViewController.popoverPresentationController!.delegate = self
+        }
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
     
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
 	
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        // If you need to use the touched cell, you can retrieve it like so
+       
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+       
+        if collectionView == self.dayCollectionView {
+            print("touched cell at indexPath \(indexPath.row) value is: \(String(daysOfMonth[indexPath.row]))")
+        }
+        
+        if collectionView == self.monthCollectionView {
+            print("touched cell at indexPath \(indexPath.row) value is: \(String(months[indexPath.row]))")
+        }
+        
+        if collectionView == self.yearCollectionView {
+            print("touched cell at indexPath \(indexPath.row) value is: \(String(years[indexPath.row]))")
+        }
+
+        
+
+    }
 }
 
 extension ViewController: UICollectionViewDataSource {
