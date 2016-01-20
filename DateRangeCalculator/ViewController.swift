@@ -14,11 +14,12 @@ import AVKit
 //*****************************************************************************************************
 class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
-	
+  
     let daysOfMonth = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
     let months = ["Jan", "Feb", "Mar","Apr", "May", "Jun","Jul", "Aug","Sep","Oct","Nov", "Dec"]
     let years = Array(1901...2999)
     let startYear = 2016  //* I DIDNT WANT TO TOUCH ANY DATE CLASSES SO JUST FOR THIS EXERCISE POPPED THIS IN HERE
+    var thelabel = UILabel()
     
 	@IBOutlet weak var dayCollectionView: UICollectionView!
     @IBOutlet weak var monthCollectionView: UICollectionView!
@@ -83,8 +84,9 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         if (monthCollectionView.hidden == false) {monthCollectionView.hidden = true}
         if (yearCollectionView.hidden == false) {yearCollectionView.hidden = true}
         
-        let thelabel = sender.view as! UILabel
-
+        //let thelabel = sender.view as! UILabel
+        thelabel = sender.view as! UILabel
+        
         if thelabel.accessibilityIdentifier == "fromDay" || thelabel.accessibilityIdentifier == "fromMonth" || thelabel.accessibilityIdentifier == "fromYear"  {
             positionCustomView1(thelabel)
         }
@@ -170,19 +172,31 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
        
         if collectionView == self.dayCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(daysOfMonth[indexPath.row]))")
-            fromDay.text = (String(daysOfMonth[indexPath.row]))
+            if thelabel.accessibilityIdentifier == "fromDay" {
+                fromDay.text = (String(daysOfMonth[indexPath.row]))
+            } else {
+                toDay.text = (String(daysOfMonth[indexPath.row]))
+            }
             dayCollectionView.hidden = true
         }
         
         if collectionView == self.monthCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(months[indexPath.row]))")
-            fromMonth.text = (String(months[indexPath.row]))
+            if thelabel.accessibilityIdentifier == "fromMonth" {
+                fromMonth.text = months[indexPath.row]
+            } else {
+                toMonth.text = months[indexPath.row]
+            }
             monthCollectionView.hidden = true
         }
         
         if collectionView == self.yearCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(years[indexPath.row]))")
-            fromYear.text = (String(years[indexPath.row]))
+            if thelabel.accessibilityIdentifier == "fromYear" {
+                fromYear.text = String(years[indexPath.row])
+            } else {
+                toYear.text = String(years[indexPath.row])
+            }
             yearCollectionView.hidden = true
         }
 
