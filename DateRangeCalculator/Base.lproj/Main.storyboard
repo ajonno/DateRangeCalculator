@@ -457,7 +457,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bcglogo" translatesAutoresizingMaskIntoConstraints="NO" id="GHl-Hd-4ER">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bcglogo" translatesAutoresizingMaskIntoConstraints="NO" id="GHl-Hd-4ER">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="4C7-Yp-63x">
