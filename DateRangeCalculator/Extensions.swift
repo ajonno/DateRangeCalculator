@@ -38,3 +38,5 @@ enum Month : Int {
     static let allValues = [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
     
 }
+
+let screenBounds = UIScreen.mainScreen().bounds

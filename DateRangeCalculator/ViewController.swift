@@ -4,13 +4,11 @@ import AVFoundation
 import AVKit
 
 
-
 //*****************************************************************************************************
 //  PLEASE NOTE! I WAS LOW ON TIME TO GET THIS SUBMITTED AND SO PUT ALL UI ELEMENTS AND CODE IN THIS VC.
-//  I WOULD **DEFINITELY**!! REFACTOR THIS CODE UNDER NORMAL CIRCUMSTANCES
+//  I WOULD **DEFINITELY**!! REFACTOR THIS SOMEWHAT MVC UNDER NORMAL CIRCUMSTANCES
 //  HOWEVER I WANTED TO GET THIS UI PIECE DONE TO SHOW THAT I WANTED TO 
-//  STAND OUT AND DO SOMETHING FUN AND A BIT DIFFERENT! 😀 (VS. GOOD OLE DATE PICKER..)
-//  IT MIGHT NOT WIN A DESIGN AWARD BUT HEY... ;-)
+//  DO SOMETHING FUN AND A BIT DIFFERENT! 😀
 //*****************************************************************************************************
 class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
@@ -22,16 +20,13 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         case ToMonth = "toMonth"
         case ToYear = "toYear"
     }
-    
-    
-    
   
     let daysOfMonth = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
     let months = ["Jan", "Feb", "Mar","Apr", "May", "Jun","Jul", "Aug","Sep","Oct","Nov", "Dec"]
     let years = Array(1901...2999)
     let startYear = 2016  //* I DIDNT WANT TO TOUCH ANY DATE CLASSES SO JUST FOR THIS EXERCISE POPPED THIS IN HERE
-    var thelabel = UILabel()
-    
+    var userDataLabel = UILabel()
+    var labelArray = [UILabel]()
     
 	@IBOutlet weak var dayCollectionView: UICollectionView!
     @IBOutlet weak var monthCollectionView: UICollectionView!
@@ -53,13 +48,15 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
 		// Do any additional setup after loading the view, typically from a nib.
 		
         //add labels to array
-        let labelArray = [fromDay, fromMonth, fromYear, toDay, toMonth, toYear]
+        labelArray = [fromDay, fromMonth, fromYear, toDay, toMonth, toYear]
         
         dayCollectionView.dataSource = self
         dayCollectionView.delegate = self
         dayCollectionView.layer.masksToBounds = true
         dayCollectionView.layer.cornerRadius = 4
         dayCollectionView.hidden = true
+
+        dayCollectionView.frame = CGRectMake(5, fromDay.frame.maxY + 3, screenBounds.width - 10, 56)
         
         monthCollectionView.dataSource = self
         monthCollectionView.delegate = self
@@ -76,6 +73,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         for label in labelArray {
             let tapGesture = UITapGestureRecognizer(target: self, action: "tappedDateView:")
             label.addGestureRecognizer(tapGesture)
+            label.userInteractionEnabled = true
         }
 	}
 
@@ -85,78 +83,82 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
 	}
 
     override func viewDidLayoutSubviews() {
-        let startYearPosition = years.indexOf(2016)
-        let indexPath = NSIndexPath(forRow: startYearPosition!, inSection: 0)
-        yearCollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredVertically, animated: false)
+        //let startYearPosition = years.indexOf(2016)
+        //let indexPath = NSIndexPath(forRow: startYearPosition!, inSection: 0)
+        //yearCollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredVertically, animated: false)
         
     }
 
     func tappedDateView(sender:UITapGestureRecognizer){
 
-        //if any other custom date picker elements are visible, hide them 
+        print("tappedDateView")
+        
+        //if any other custom date picker elements are visible, hide them
         if (dayCollectionView.hidden == false) {dayCollectionView.hidden = true}
         if (monthCollectionView.hidden == false) {monthCollectionView.hidden = true}
         if (yearCollectionView.hidden == false) {yearCollectionView.hidden = true}
         
-        //let thelabel = sender.view as! UILabel
-        thelabel = sender.view as! UILabel
-        
-        if thelabel.accessibilityIdentifier == SourceDate.FromDay.rawValue || thelabel.accessibilityIdentifier == SourceDate.FromMonth.rawValue || thelabel.accessibilityIdentifier == SourceDate.FromYear.rawValue  {
-            positionCustomView1(thelabel)
+        userDataLabel = sender.view as! UILabel
+        if userDataLabel.userInteractionEnabled == true {
+            userDataLabel.userInteractionEnabled = false
         }
         
-        if thelabel.accessibilityIdentifier == SourceDate.ToDay.rawValue || thelabel.accessibilityIdentifier == SourceDate.ToMonth.rawValue || thelabel.accessibilityIdentifier == SourceDate.ToYear.rawValue  {
-            positionCustomView2(thelabel)
+        if userDataLabel.accessibilityIdentifier == SourceDate.FromDay.rawValue || userDataLabel.accessibilityIdentifier == SourceDate.FromMonth.rawValue || userDataLabel.accessibilityIdentifier == SourceDate.FromYear.rawValue  {
+            positionFromViewLookupControls(userDataLabel)
+        }
+        
+        if userDataLabel.accessibilityIdentifier == SourceDate.ToDay.rawValue || userDataLabel.accessibilityIdentifier == SourceDate.ToMonth.rawValue || userDataLabel.accessibilityIdentifier == SourceDate.ToYear.rawValue  {
+            positionToViewLookupControls(userDataLabel)
         }
 
        
     }
     
-    private func positionCustomView1(thelabel: UILabel) {
+    private func positionFromViewLookupControls(userDataLabel: UILabel) {
         
-        if thelabel.accessibilityIdentifier == SourceDate.FromDay.rawValue {
-            dayCollectionView.frame = CGRectMake( dayCollectionView.frame.minX, fromDay.frame.maxY + 3, dayCollectionView.frame.size.width, dayCollectionView.frame.size.height ) // set new position exactly
+        if userDataLabel.accessibilityIdentifier == SourceDate.FromDay.rawValue {
+            dayCollectionView.frame = CGRectMake(5, fromDay.frame.maxY + 3, screenBounds.width - 10, 56)
             dayCollectionView.hidden = false
         }
-        if thelabel.accessibilityIdentifier == SourceDate.FromMonth.rawValue {
+        if userDataLabel.accessibilityIdentifier == SourceDate.FromMonth.rawValue {
             let fromMidX = fromMonth.frame.midX
-            let fromMaxY = fromMonth.bounds.maxY + monthCollectionView.bounds.height + fromMonth.bounds.height
+            let fromMaxY = fromMonth.bounds.maxY + monthCollectionView.bounds.height + fromMonth.bounds.height + 20
             let pos = CGPointMake(fromMidX, fromMaxY)
-            
             monthCollectionView.center = pos
+            monthCollectionView.frame = CGRectMake(monthCollectionView.frame.minX, fromMonth.frame.maxY + 3, monthCollectionView.frame.width, monthCollectionView.frame.height + 15)
             monthCollectionView.hidden = false
         }
-        if thelabel.accessibilityIdentifier == SourceDate.FromYear.rawValue {
-            yearCollectionView.frame = CGRectMake( fromYear.frame.maxX - yearCollectionView.frame.width, fromYear.frame.maxY + 3, yearCollectionView.frame.size.width, yearCollectionView.frame.size.height )
+        if userDataLabel.accessibilityIdentifier == SourceDate.FromYear.rawValue {
+            yearCollectionView.frame = CGRectMake( fromYear.frame.maxX - yearCollectionView.frame.width, fromYear.frame.maxY + 13, yearCollectionView.frame.size.width, yearCollectionView.frame.size.height )
             yearCollectionView.hidden = false
         }
 
     }
     
-    private func positionCustomView2(thelabel: UILabel) {
-    
-        if thelabel.accessibilityIdentifier == SourceDate.ToDay.rawValue {
-            dayCollectionView.frame = CGRectMake(dayCollectionView.frame.minX, toDay.frame.maxY + 3, dayCollectionView.frame.size.width, dayCollectionView.frame.size.height ) // set new position exactly
+    private func positionToViewLookupControls(userDataLabel: UILabel) {
+
+        if userDataLabel.accessibilityIdentifier == SourceDate.ToDay.rawValue {
+            dayCollectionView.frame = CGRectMake(5, toDay.frame.maxY + 3, screenBounds.width - 10, 56)
             dayCollectionView.hidden = false
         }
-        if thelabel.accessibilityIdentifier == SourceDate.ToMonth.rawValue {
+        if userDataLabel.accessibilityIdentifier == SourceDate.ToMonth.rawValue {
             let fromMidX = toMonth.frame.midX
-            let fromMaxY = toMonth.frame.maxY + monthCollectionView.bounds.height/2 + 3 // toMonth.bounds.height
+            let fromMaxY = toMonth.frame.maxY + monthCollectionView.frame.height/2 + 3
             let pos = CGPointMake(fromMidX, fromMaxY)
             
             monthCollectionView.center = pos
             monthCollectionView.hidden = false
         }
-        if thelabel.accessibilityIdentifier == SourceDate.ToYear.rawValue {
-            yearCollectionView.frame = CGRectMake( toYear.frame.maxX - yearCollectionView.frame.width, toYear.frame.maxY + 3, yearCollectionView.frame.size.width, yearCollectionView.frame.size.height ) // set new position exactly
+        if userDataLabel.accessibilityIdentifier == SourceDate.ToYear.rawValue {
+            yearCollectionView.frame = CGRectMake( toYear.frame.maxX - yearCollectionView.frame.width, toYear.frame.maxY + 3, yearCollectionView.frame.size.width, yearCollectionView.frame.size.height )
             
             yearCollectionView.hidden = false
         }
     }
 
+    
  
     @IBAction func tappedCalculateButton(sender: UIButton) {
-        
         
         //build from date
         let fromDate = AJDate(theDay: convertToInt(fromDay.text!), theMonth: convertMonthStringToInt(fromMonth.text!), theYear: convertToInt(fromYear.text!))!
@@ -192,13 +194,17 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
 extension ViewController: UICollectionViewDelegateFlowLayout {
 	
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        // If you need to use the touched cell, you can retrieve it like so
        
+        //reset state for tapping label(s)
+        for label in labelArray {
+            label.userInteractionEnabled = true
+        }
+        
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
        
         if collectionView == self.dayCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(daysOfMonth[indexPath.row]))")
-            if thelabel.accessibilityIdentifier == SourceDate.FromDay.rawValue {
+            if userDataLabel.accessibilityIdentifier == SourceDate.FromDay.rawValue {
                 fromDay.text = (String(daysOfMonth[indexPath.row]))
             } else {
                 toDay.text = (String(daysOfMonth[indexPath.row]))
@@ -208,7 +214,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         
         if collectionView == self.monthCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(months[indexPath.row]))")
-            if thelabel.accessibilityIdentifier == SourceDate.FromMonth.rawValue {
+            if userDataLabel.accessibilityIdentifier == SourceDate.FromMonth.rawValue {
                 fromMonth.text = months[indexPath.row]
             } else {
                 toMonth.text = months[indexPath.row]
@@ -218,7 +224,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         
         if collectionView == self.yearCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(years[indexPath.row]))")
-            if thelabel.accessibilityIdentifier == SourceDate.FromYear.rawValue {
+            if userDataLabel.accessibilityIdentifier == SourceDate.FromYear.rawValue {
                 fromYear.text = String(years[indexPath.row])
             } else {
                 toYear.text = String(years[indexPath.row])
