@@ -67,6 +67,11 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         yearCollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
 
 	}
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
