@@ -183,31 +183,41 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
  
     @IBAction func tappedCalculateButton(sender: UIButton) {
         
+        let alert = UIAlertController(title: "Invalid Date", message: "", preferredStyle: .Alert)
+
+        
         let fromDate = AJDate(theDay: convertToInt(fromDay.text!), theMonth: convertMonthStringToInt(fromMonth.text!), theYear: convertToInt(fromYear.text!))
 
         let toDate = AJDate(theDay: convertToInt(toDay.text!), theMonth: convertMonthStringToInt(toMonth.text!), theYear: convertToInt(toYear.text!))
 
         
-        // confirm valid dates
-        if let fromDate = fromDate, toDate = toDate {
+        guard let _ = fromDate else {
+            alert.title = "First date is invalid"
+            alert.addAction(UIAlertAction(title: "Oops", style: .Default, handler: nil))
+            presentViewController(alert, animated: false, completion: nil)
+            return
+        }
 
-            // toDate = toDate {
+        guard let _ = toDate else {
+            alert.title = "Second date is invalid"
+            alert.addAction(UIAlertAction(title: "Oops", style: .Default, handler: nil))
+            presentViewController(alert, animated: false, completion: nil)
+            return
+        }
+
+        //unwrap dates
+        if let fromDate = fromDate, toDate = toDate {
             let total = fromDate.numberOfDaysBetween(fromDate, toDate: toDate, excludeStartDate: true)
-        
+            
             if ( total == 1) {
                 resultLabel.text = String(total) + " day"
             } else {
                 resultLabel.text = String(total) + " days"
             }
-        } else {
-            //let user know one of the dates was incorrect format
-            let alert = UIAlertController(title: "Invalid Date", message: "One of the dates is invalid.", preferredStyle: .Alert)
-            
-            alert.addAction(UIAlertAction(title: "Oops", style: .Default, handler: nil))
-            presentViewController(alert, animated: false, completion: nil)
         }
         
     }
+    
    
     private func convertToInt(stringValue: String) -> Int {
         if let intVersion = Int(stringValue) {
