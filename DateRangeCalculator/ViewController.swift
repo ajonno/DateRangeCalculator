@@ -14,6 +14,15 @@ import AVKit
 //*****************************************************************************************************
 class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
+    enum SourceDate : String {
+        case FromDay = "fromDay"
+        case FromMonth = "fromMonth"
+        case FromYear = "fromYear"
+        case ToDay = "toDay"
+        case ToMonth = "toMonth"
+        case ToYear = "toYear"
+    }
+    
   
     let daysOfMonth = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
     let months = ["Jan", "Feb", "Mar","Apr", "May", "Jun","Jul", "Aug","Sep","Oct","Nov", "Dec"]
@@ -87,11 +96,11 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         //let thelabel = sender.view as! UILabel
         thelabel = sender.view as! UILabel
         
-        if thelabel.accessibilityIdentifier == "fromDay" || thelabel.accessibilityIdentifier == "fromMonth" || thelabel.accessibilityIdentifier == "fromYear"  {
+        if thelabel.accessibilityIdentifier == SourceDate.FromDay.rawValue || thelabel.accessibilityIdentifier == SourceDate.FromMonth.rawValue || thelabel.accessibilityIdentifier == SourceDate.FromYear.rawValue  {
             positionCustomView1(thelabel)
         }
         
-        if thelabel.accessibilityIdentifier == "toDay" || thelabel.accessibilityIdentifier == "toMonth" || thelabel.accessibilityIdentifier == "toYear"  {
+        if thelabel.accessibilityIdentifier == SourceDate.ToDay.rawValue || thelabel.accessibilityIdentifier == SourceDate.ToMonth.rawValue || thelabel.accessibilityIdentifier == SourceDate.ToYear.rawValue  {
             positionCustomView2(thelabel)
         }
 
@@ -100,11 +109,11 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     
     private func positionCustomView1(thelabel: UILabel) {
         
-        if thelabel.accessibilityIdentifier == "fromDay" {
+        if thelabel.accessibilityIdentifier == SourceDate.FromDay.rawValue {
             dayCollectionView.frame = CGRectMake( dayCollectionView.frame.minX, fromDay.frame.maxY + 3, dayCollectionView.frame.size.width, dayCollectionView.frame.size.height ) // set new position exactly
             dayCollectionView.hidden = false
         }
-        if thelabel.accessibilityIdentifier == "fromMonth" {
+        if thelabel.accessibilityIdentifier == SourceDate.FromMonth.rawValue {
             let fromMidX = fromMonth.frame.midX
             let fromMaxY = fromMonth.bounds.maxY + monthCollectionView.bounds.height + fromMonth.bounds.height
             let pos = CGPointMake(fromMidX, fromMaxY)
@@ -112,7 +121,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             monthCollectionView.center = pos
             monthCollectionView.hidden = false
         }
-        if thelabel.accessibilityIdentifier == "fromYear" {
+        if thelabel.accessibilityIdentifier == SourceDate.FromYear.rawValue {
             yearCollectionView.frame = CGRectMake( fromYear.frame.maxX - yearCollectionView.frame.width, fromYear.frame.maxY + 3, yearCollectionView.frame.size.width, yearCollectionView.frame.size.height )
             yearCollectionView.hidden = false
         }
@@ -121,11 +130,11 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     
     private func positionCustomView2(thelabel: UILabel) {
     
-        if thelabel.accessibilityIdentifier == "toDay" {
+        if thelabel.accessibilityIdentifier == SourceDate.ToDay.rawValue {
             dayCollectionView.frame = CGRectMake(dayCollectionView.frame.minX, toDay.frame.maxY + 3, dayCollectionView.frame.size.width, dayCollectionView.frame.size.height ) // set new position exactly
             dayCollectionView.hidden = false
         }
-        if thelabel.accessibilityIdentifier == "toMonth" {
+        if thelabel.accessibilityIdentifier == SourceDate.ToMonth.rawValue {
             let fromMidX = toMonth.frame.midX
             let fromMaxY = toMonth.frame.maxY + monthCollectionView.bounds.height/2 + 3 // toMonth.bounds.height
             let pos = CGPointMake(fromMidX, fromMaxY)
@@ -133,14 +142,13 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             monthCollectionView.center = pos
             monthCollectionView.hidden = false
         }
-        if thelabel.accessibilityIdentifier == "toYear" {
+        if thelabel.accessibilityIdentifier == SourceDate.ToYear.rawValue {
             yearCollectionView.frame = CGRectMake( toYear.frame.maxX - yearCollectionView.frame.width, toYear.frame.maxY + 3, yearCollectionView.frame.size.width, yearCollectionView.frame.size.height ) // set new position exactly
             
             yearCollectionView.hidden = false
         }
-
-    
     }
+
     func tappedButton(sender: UIButton) {
     
     
@@ -172,7 +180,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
        
         if collectionView == self.dayCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(daysOfMonth[indexPath.row]))")
-            if thelabel.accessibilityIdentifier == "fromDay" {
+            if thelabel.accessibilityIdentifier == SourceDate.FromDay.rawValue {
                 fromDay.text = (String(daysOfMonth[indexPath.row]))
             } else {
                 toDay.text = (String(daysOfMonth[indexPath.row]))
@@ -182,7 +190,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         
         if collectionView == self.monthCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(months[indexPath.row]))")
-            if thelabel.accessibilityIdentifier == "fromMonth" {
+            if thelabel.accessibilityIdentifier == SourceDate.FromMonth.rawValue {
                 fromMonth.text = months[indexPath.row]
             } else {
                 toMonth.text = months[indexPath.row]
@@ -192,16 +200,13 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         
         if collectionView == self.yearCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(years[indexPath.row]))")
-            if thelabel.accessibilityIdentifier == "fromYear" {
+            if thelabel.accessibilityIdentifier == SourceDate.FromYear.rawValue {
                 fromYear.text = String(years[indexPath.row])
             } else {
                 toYear.text = String(years[indexPath.row])
             }
             yearCollectionView.hidden = true
         }
-
-        
-
     }
 }
 

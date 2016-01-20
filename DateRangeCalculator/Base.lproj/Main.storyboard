@@ -520,7 +520,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="70"/>
                             </constraint>
                             <constraint firstItem="F3w-Rx-JQe" firstAttribute="top" secondItem="QRL-VE-zfX" secondAttribute="bottom" constant="158" id="7Ni-Dz-tuK">
-                                <variation key="heightClass=regular-widthClass=compact" constant="120"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="160"/>
                             </constraint>
                             <constraint firstItem="rG1-9M-kjJ" firstAttribute="top" secondItem="jLs-iZ-jTS" secondAttribute="bottom" constant="13" id="8q2-WE-CVg">
                                 <variation key="heightClass=regular-widthClass=compact" constant="8"/>
