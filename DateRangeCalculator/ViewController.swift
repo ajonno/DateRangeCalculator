@@ -184,8 +184,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     @IBAction func tappedCalculateButton(sender: UIButton) {
         
         let alert = UIAlertController(title: "Invalid Date", message: "", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Oops", style: .Default, handler: nil))
 
-        
         let fromDate = AJDate(theDay: convertToInt(fromDay.text!), theMonth: convertMonthStringToInt(fromMonth.text!), theYear: convertToInt(fromYear.text!))
 
         let toDate = AJDate(theDay: convertToInt(toDay.text!), theMonth: convertMonthStringToInt(toMonth.text!), theYear: convertToInt(toYear.text!))
@@ -193,14 +193,12 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         
         guard let _ = fromDate else {
             alert.title = "First date is invalid"
-            alert.addAction(UIAlertAction(title: "Oops", style: .Default, handler: nil))
             presentViewController(alert, animated: false, completion: nil)
             return
         }
 
         guard let _ = toDate else {
             alert.title = "Second date is invalid"
-            alert.addAction(UIAlertAction(title: "Oops", style: .Default, handler: nil))
             presentViewController(alert, animated: false, completion: nil)
             return
         }
