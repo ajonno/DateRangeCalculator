@@ -10,7 +10,8 @@
 		EF2BEE391C4E605B001B683B /* MonthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEE381C4E605B001B683B /* MonthCell.swift */; };
 		EF2BEE3B1C4ECBA8001B683B /* YearCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEE3A1C4ECBA8001B683B /* YearCell.swift */; };
 		EF2BEE3D1C4EDB09001B683B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEE3C1C4EDB09001B683B /* Extensions.swift */; };
-		EF2BEE3F1C4EDD48001B683B /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEE3E1C4EDD48001B683B /* PopoverViewController.swift */; };
+		EF2BEE7B1C4F6EB4001B683B /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEE7A1C4F6EB4001B683B /* CollectionViewDelegate.swift */; };
+		EF2BEE7D1C4F6F58001B683B /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2BEE7C1C4F6F58001B683B /* CollectionViewDataSource.swift */; };
 		EF3E29C81C4CB5C700EAC626 /* AJDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3E29C71C4CB5C700EAC626 /* AJDate.swift */; };
 		EF74B2741C4E487800EF60F3 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF74B2731C4E487800EF60F3 /* DayCell.swift */; };
 		EFAAF4DD1C4CB19F00DEA4D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFAAF4DC1C4CB19F00DEA4D5 /* AppDelegate.swift */; };
@@ -35,7 +36,8 @@
 		EF2BEE381C4E605B001B683B /* MonthCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthCell.swift; sourceTree = "<group>"; };
 		EF2BEE3A1C4ECBA8001B683B /* YearCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YearCell.swift; sourceTree = "<group>"; };
 		EF2BEE3C1C4EDB09001B683B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		EF2BEE3E1C4EDD48001B683B /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		EF2BEE7A1C4F6EB4001B683B /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
+		EF2BEE7C1C4F6F58001B683B /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		EF3E29C71C4CB5C700EAC626 /* AJDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AJDate.swift; sourceTree = "<group>"; };
 		EF74B2731C4E487800EF60F3 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		EFAAF4D91C4CB19F00DEA4D5 /* DateRangeCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateRangeCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,7 +102,8 @@
 				EF2BEE381C4E605B001B683B /* MonthCell.swift */,
 				EF2BEE3A1C4ECBA8001B683B /* YearCell.swift */,
 				EF2BEE3C1C4EDB09001B683B /* Extensions.swift */,
-				EF2BEE3E1C4EDD48001B683B /* PopoverViewController.swift */,
+				EF2BEE7A1C4F6EB4001B683B /* CollectionViewDelegate.swift */,
+				EF2BEE7C1C4F6F58001B683B /* CollectionViewDataSource.swift */,
 			);
 			path = DateRangeCalculator;
 			sourceTree = "<group>";
@@ -215,11 +218,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF2BEE3F1C4EDD48001B683B /* PopoverViewController.swift in Sources */,
 				EF2BEE391C4E605B001B683B /* MonthCell.swift in Sources */,
 				EFAAF4DF1C4CB19F00DEA4D5 /* ViewController.swift in Sources */,
 				EF2BEE3B1C4ECBA8001B683B /* YearCell.swift in Sources */,
 				EF3E29C81C4CB5C700EAC626 /* AJDate.swift in Sources */,
+				EF2BEE7D1C4F6F58001B683B /* CollectionViewDataSource.swift in Sources */,
+				EF2BEE7B1C4F6EB4001B683B /* CollectionViewDelegate.swift in Sources */,
 				EF74B2741C4E487800EF60F3 /* DayCell.swift in Sources */,
 				EFAAF4DD1C4CB19F00DEA4D5 /* AppDelegate.swift in Sources */,
 				EF2BEE3D1C4EDB09001B683B /* Extensions.swift in Sources */,
