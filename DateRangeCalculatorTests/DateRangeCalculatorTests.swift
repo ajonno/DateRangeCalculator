@@ -177,7 +177,18 @@ class DateRangeCalculatorTests: XCTestCase {
 			let result = fromDate.numberOfDaysBetween(fromDate, toDate: toDate, excludeStartDate: true)
 			XCTAssertEqual(1979, result)
 		}
-	}
+
+        //calc from(3 Jan 1989) to (23 Jan 1989) ; sb 1979 days
+        let afromDate = AJDate(theDay: 3, theMonth: 1, theYear: 1989)	//<!!!!-----
+        let atoDate = AJDate(theDay: 23, theMonth: 1, theYear: 1989)
+        
+        if let afromDate = afromDate , let atoDate = atoDate {
+            let result = afromDate.numberOfDaysBetween(afromDate, toDate: atoDate, excludeStartDate: true)
+            XCTAssertEqual(19, result)
+        }
+
+    
+    }
 
 	func test_4_From_Test_Cases() {
 		

@@ -23,12 +23,15 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         case ToYear = "toYear"
     }
     
+    
+    
   
     let daysOfMonth = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
     let months = ["Jan", "Feb", "Mar","Apr", "May", "Jun","Jul", "Aug","Sep","Oct","Nov", "Dec"]
     let years = Array(1901...2999)
     let startYear = 2016  //* I DIDNT WANT TO TOUCH ANY DATE CLASSES SO JUST FOR THIS EXERCISE POPPED THIS IN HERE
     var thelabel = UILabel()
+    
     
 	@IBOutlet weak var dayCollectionView: UICollectionView!
     @IBOutlet weak var monthCollectionView: UICollectionView!
@@ -41,7 +44,9 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     @IBOutlet weak var toDay: UILabel!
     @IBOutlet weak var toMonth: UILabel!
     @IBOutlet weak var toYear: UILabel!
-	
+
+    @IBOutlet weak var resultLabel: UILabel!
+
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -149,25 +154,38 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         }
     }
 
-    func tappedButton(sender: UIButton) {
-    
-    
+ 
+    @IBAction func tappedCalculateButton(sender: UIButton) {
+        
+        
+        //build from date
+        let fromDate = AJDate(theDay: convertToInt(fromDay.text!), theMonth: convertMonthStringToInt(fromMonth.text!), theYear: convertToInt(fromYear.text!))!
+  
+       let toDate = AJDate(theDay: convertToInt(toDay.text!), theMonth: convertMonthStringToInt(toMonth.text!), theYear: convertToInt(toYear.text!))!
+
+        let total = fromDate.numberOfDaysBetween(fromDate, toDate: toDate, excludeStartDate: true)
+        resultLabel.text = String(total) + (total > 1 ? " days" : " day")
+        print(total)
     }
-    
-    
-    @IBOutlet weak var testButton: UIButton!
-//    @IBAction func tappedButton(sender: UIButton) {
-//        
-//        
-//        
-//        dayCollectionView.frame = CGRectMake( fromDay.frame.minX, fromDay.frame.maxY, dayCollectionView.frame.size.width, dayCollectionView.frame.size.height ) // set new position exactly
-//
-//        print(dayCollectionView.frame)
-//        print(fromDay.frame.minX)
-//
-//        
-//    }
    
+    private func convertToInt(stringValue: String) -> Int {
+        if let intVersion = Int(stringValue) {
+            return intVersion
+        } else {
+            return 0
+        }
+    }
+
+    private func convertMonthStringToInt(stringValue: String) -> Int {
+        let monthValue = 0
+        for month in Month.allValues {
+            let monthString = String(month)
+            if monthString == stringValue {
+                return month.rawValue
+            }
+        }
+        return monthValue
+    }
     
 }
 
