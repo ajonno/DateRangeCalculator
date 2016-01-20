@@ -44,16 +44,19 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         dayCollectionView.delegate = self
         dayCollectionView.layer.masksToBounds = true
         dayCollectionView.layer.cornerRadius = 4
+        dayCollectionView.hidden = true
         
         monthCollectionView.dataSource = self
         monthCollectionView.delegate = self
         monthCollectionView.layer.masksToBounds = true
         monthCollectionView.layer.cornerRadius = 4
+        monthCollectionView.hidden = true
 
         yearCollectionView.dataSource = self
         yearCollectionView.delegate = self
         yearCollectionView.layer.masksToBounds = true
         yearCollectionView.layer.cornerRadius = 4
+        yearCollectionView.hidden = true
 
         for label in labelArray {
             let tapGesture = UITapGestureRecognizer(target: self, action: "tappedDateView:")
@@ -74,57 +77,87 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     }
 
     func tappedDateView(sender:UITapGestureRecognizer){
+
+        //if any other custom date picker elements are visible, hide them 
+        if (dayCollectionView.hidden == false) {dayCollectionView.hidden = true}
+        if (monthCollectionView.hidden == false) {monthCollectionView.hidden = true}
+        if (yearCollectionView.hidden == false) {yearCollectionView.hidden = true}
+        
         let thelabel = sender.view as! UILabel
-        print("yep \(thelabel.accessibilityIdentifier) value of label is: \(thelabel.text)")
+
+        if thelabel.accessibilityIdentifier == "fromDay" || thelabel.accessibilityIdentifier == "fromMonth" || thelabel.accessibilityIdentifier == "fromYear"  {
+            positionCustomView1(thelabel)
+        }
+        
+        if thelabel.accessibilityIdentifier == "toDay" || thelabel.accessibilityIdentifier == "toMonth" || thelabel.accessibilityIdentifier == "toYear"  {
+            positionCustomView2(thelabel)
+        }
+
+       
+    }
+    
+    private func positionCustomView1(thelabel: UILabel) {
+        
+        if thelabel.accessibilityIdentifier == "fromDay" {
+            dayCollectionView.frame = CGRectMake( dayCollectionView.frame.minX, fromDay.frame.maxY + 3, dayCollectionView.frame.size.width, dayCollectionView.frame.size.height ) // set new position exactly
+            dayCollectionView.hidden = false
+        }
+        if thelabel.accessibilityIdentifier == "fromMonth" {
+            let fromMidX = fromMonth.frame.midX
+            let fromMaxY = fromMonth.bounds.maxY + monthCollectionView.bounds.height + fromMonth.bounds.height
+            let pos = CGPointMake(fromMidX, fromMaxY)
+            
+            monthCollectionView.center = pos
+            monthCollectionView.hidden = false
+        }
+        if thelabel.accessibilityIdentifier == "fromYear" {
+            yearCollectionView.frame = CGRectMake( fromYear.frame.maxX - yearCollectionView.frame.width, fromYear.frame.maxY + 3, yearCollectionView.frame.size.width, yearCollectionView.frame.size.height )
+            yearCollectionView.hidden = false
+        }
 
     }
+    
+    private func positionCustomView2(thelabel: UILabel) {
+    
+        if thelabel.accessibilityIdentifier == "toDay" {
+            dayCollectionView.frame = CGRectMake(dayCollectionView.frame.minX, toDay.frame.maxY + 3, dayCollectionView.frame.size.width, dayCollectionView.frame.size.height ) // set new position exactly
+            dayCollectionView.hidden = false
+        }
+        if thelabel.accessibilityIdentifier == "toMonth" {
+            let fromMidX = toMonth.frame.midX
+            let fromMaxY = toMonth.frame.maxY + monthCollectionView.bounds.height/2 + 3 // toMonth.bounds.height
+            let pos = CGPointMake(fromMidX, fromMaxY)
+            
+            monthCollectionView.center = pos
+            monthCollectionView.hidden = false
+        }
+        if thelabel.accessibilityIdentifier == "toYear" {
+            yearCollectionView.frame = CGRectMake( toYear.frame.maxX - yearCollectionView.frame.width, toYear.frame.maxY + 3, yearCollectionView.frame.size.width, yearCollectionView.frame.size.height ) // set new position exactly
+            
+            yearCollectionView.hidden = false
+        }
+
+    
+    }
+    func tappedButton(sender: UIButton) {
+    
+    
+    }
+    
     
     @IBOutlet weak var testButton: UIButton!
-    @IBAction func tappedButton(sender: UIButton) {
-        
-        let dmyViewController: PopoverViewController = storyboard!.instantiateViewControllerWithIdentifier("popoverViewController") as! PopoverViewController
-        
-        
-        
-        // present the controller
-        dmyViewController.modalPresentationStyle = .Popover
-        dmyViewController.preferredContentSize = CGSizeMake(50, 100)
-        
-        // configure the Popover presentation controller
-        let popController = dmyViewController.popoverPresentationController
-        popController!.permittedArrowDirections = .Down
-        popController!.delegate = self
-        
-        //anchor here
-        popController?.sourceView = sender
-        popController?.sourceRect = CGRect(
-            x: 100,
-            y: 400,
-            width: 1,
-            height: 1)
-
-        presentViewController(
-            dmyViewController,
-            animated: true,
-            completion: nil)
-        
-        // in case we don't have a bar button as reference
-//        popController!.sourceView = self.toDay
-       // popController!.sourceRect = CGRectMake(30, 50, 10, 10);
-        
-    }
+//    @IBAction func tappedButton(sender: UIButton) {
+//        
+//        
+//        
+//        dayCollectionView.frame = CGRectMake( fromDay.frame.minX, fromDay.frame.maxY, dayCollectionView.frame.size.width, dayCollectionView.frame.size.height ) // set new position exactly
+//
+//        print(dayCollectionView.frame)
+//        print(fromDay.frame.minX)
+//
+//        
+//    }
    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "popoverSegue" {
-            let popoverViewController = segue.destinationViewController 
-            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.Popover
-            popoverViewController.popoverPresentationController!.delegate = self
-        }
-    }
-    
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.None
-    }
     
 }
 
@@ -137,14 +170,20 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
        
         if collectionView == self.dayCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(daysOfMonth[indexPath.row]))")
+            fromDay.text = (String(daysOfMonth[indexPath.row]))
+            dayCollectionView.hidden = true
         }
         
         if collectionView == self.monthCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(months[indexPath.row]))")
+            fromMonth.text = (String(months[indexPath.row]))
+            monthCollectionView.hidden = true
         }
         
         if collectionView == self.yearCollectionView {
             print("touched cell at indexPath \(indexPath.row) value is: \(String(years[indexPath.row]))")
+            fromYear.text = (String(years[indexPath.row]))
+            yearCollectionView.hidden = true
         }
 
         
