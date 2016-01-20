@@ -9,27 +9,8 @@
 /**
 	Notes
 	=====
-	- this class is being built to satisfy the requirements of a simple from-date range task, and so its properties and methods are designed only with that purpose in mind
+	- this class is being built to satisfy the requirements of a from-date range task, and so its properties and methods are designed solely with that purpose in mind
 **/
-
-import Foundation
-
-
-//enum Month : Int {
-//	case Jan = 1
-//	case Feb = 2
-//	case Mar = 3
-//	case Apr = 4
-//	case May = 5
-//	case Jun = 6
-//	case Jul = 7
-//	case Aug = 8
-//	case Sep = 9
-//	case Oct = 10
-//	case Nov = 11
-//	case Dec = 12
-//}
-
 
 struct AJDate {
 	
@@ -164,16 +145,13 @@ struct AJDate {
 	
 		//number of days remaining in the fromMonth
 		let daysRemainingInFromMonth = numberOfDaysUntilEndOfMonth(fromYear, fromMonth: fromMonth, fromDay: fromDay)
-		//print("\ndaysRemainingInFromMonth = \(daysRemainingInFromMonth)\n")
 		
 		let allMonthsAfterStartMonth = gregorianMonths.dropFirst(fromMonth)
-		print("\nallMonthsAfterStartMonth = \(allMonthsAfterStartMonth)\n")
 		
 		var totalDaysForAllOtherMonths: Int = 0
 		for month in allMonthsAfterStartMonth {
 			totalDaysForAllOtherMonths += numberOfDaysInMonth(fromYear, theMonth: month)
 		}
-		//print("\ntotalDaysForAllOtherMonths = \(totalDaysForAllOtherMonths)\n")
 		
 		//TODO: this is currently NOT including the fromDay. so vs. web result this is 1 less
 		
@@ -181,9 +159,6 @@ struct AJDate {
 	}
 	
 	func numberOfDayFromStartOfYearTo(toYear: Int, toMonth: Int, toDay: Int) -> Int {
-		
-		//   1/1/2005 - 31/12/2005		[31, 28, 31 18] = 69
-		
 		//let monthsToCalculateDaysFor = [Jan…toMonth]  EXCLUDE THE **TO** MONTH when building this array
 		let monthsToCalculateDaysFor = gregorianMonths.dropLast(gregorianMonths.count - (toMonth - 1))
 		
@@ -197,7 +172,6 @@ struct AJDate {
 	
 	
 	func numberOfDaysBetween(fromDate: AJDate, toDate: AJDate, excludeStartDate: Bool) -> Int {
-		
 		//case 1 - start and end yr/mth are the same
 		if (fromDate.year == toDate.year && fromDate.month == toDate.month) {
             let finalResult = daysOnlyAreDifferent(fromDate, toDate: toDate, excludeStartDate: excludeStartDate)
@@ -308,11 +282,7 @@ struct AJDate {
         if (fromDate.year == toDate.year) && (fromDate.month == toDate.month)  &&  (fromDate.day > toDate.day){
             return false
         }
-        
-        
 		return true
 	}
-	
-
 	
 }
