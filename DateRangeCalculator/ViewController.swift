@@ -183,17 +183,30 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
  
     @IBAction func tappedCalculateButton(sender: UIButton) {
         
-        //build from date
-        let fromDate = AJDate(theDay: convertToInt(fromDay.text!), theMonth: convertMonthStringToInt(fromMonth.text!), theYear: convertToInt(fromYear.text!))!
-  
-        let toDate = AJDate(theDay: convertToInt(toDay.text!), theMonth: convertMonthStringToInt(toMonth.text!), theYear: convertToInt(toYear.text!))!
+        let fromDate = AJDate(theDay: convertToInt(fromDay.text!), theMonth: convertMonthStringToInt(fromMonth.text!), theYear: convertToInt(fromYear.text!))
 
-        let total = fromDate.numberOfDaysBetween(fromDate, toDate: toDate, excludeStartDate: true)
-        if ( total == 1) {
-            resultLabel.text = String(total) + " day"
+        let toDate = AJDate(theDay: convertToInt(toDay.text!), theMonth: convertMonthStringToInt(toMonth.text!), theYear: convertToInt(toYear.text!))
+
+        
+        // confirm valid dates
+        if let fromDate = fromDate, toDate = toDate {
+
+            // toDate = toDate {
+            let total = fromDate.numberOfDaysBetween(fromDate, toDate: toDate, excludeStartDate: true)
+        
+            if ( total == 1) {
+                resultLabel.text = String(total) + " day"
+            } else {
+                resultLabel.text = String(total) + " days"
+            }
         } else {
-            resultLabel.text = String(total) + " days"
+            //let user know one of the dates was incorrect format
+            let alert = UIAlertController(title: "Invalid Date", message: "One of the dates is invalid.", preferredStyle: .Alert)
+            
+            alert.addAction(UIAlertAction(title: "Oops", style: .Default, handler: nil))
+            presentViewController(alert, animated: false, completion: nil)
         }
+        
     }
    
     private func convertToInt(stringValue: String) -> Int {
