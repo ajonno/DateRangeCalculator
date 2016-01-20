@@ -40,6 +40,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     @IBOutlet weak var toMonth: UILabel!
     @IBOutlet weak var toYear: UILabel!
 
+    @IBOutlet weak var backgroundImage: UIImageView!
+    
     @IBOutlet weak var resultLabel: UILabel!
 
 	
