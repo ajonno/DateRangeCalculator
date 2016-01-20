@@ -47,34 +47,23 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		
-        //add labels to array
+        //add labels that hold the dates user has chosen to array
         labelArray = [fromDay, fromMonth, fromYear, toDay, toMonth, toYear]
         
-        dayCollectionView.dataSource = self
-        dayCollectionView.delegate = self
-        dayCollectionView.layer.masksToBounds = true
-        dayCollectionView.layer.cornerRadius = 4
-        dayCollectionView.hidden = true
-
-        dayCollectionView.frame = CGRectMake(5, fromDay.frame.maxY + 3, screenBounds.width - 10, 56)
-        
-        monthCollectionView.dataSource = self
-        monthCollectionView.delegate = self
-        monthCollectionView.layer.masksToBounds = true
-        monthCollectionView.layer.cornerRadius = 4
-        monthCollectionView.hidden = true
-
-        yearCollectionView.dataSource = self
-        yearCollectionView.delegate = self
-        yearCollectionView.layer.masksToBounds = true
-        yearCollectionView.layer.cornerRadius = 4
-        yearCollectionView.hidden = true
-
+        initialiseDayCollectionView()
+        initialiseMonthCollectionView()
+        initialiseYearCollectionView()
+     
         for label in labelArray {
             let tapGesture = UITapGestureRecognizer(target: self, action: "tappedDateView:")
             label.addGestureRecognizer(tapGesture)
             label.userInteractionEnabled = true
         }
+        
+        let startYearPosition = years.indexOf(2016)
+        let indexPath = NSIndexPath(forRow: startYearPosition!, inSection: 0)
+        yearCollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredVertically, animated: false)
+
 	}
 
 	override func didReceiveMemoryWarning() {
@@ -82,17 +71,35 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
 		// Dispose of any resources that can be recreated.
 	}
 
-    override func viewDidLayoutSubviews() {
-        //let startYearPosition = years.indexOf(2016)
-        //let indexPath = NSIndexPath(forRow: startYearPosition!, inSection: 0)
-        //yearCollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredVertically, animated: false)
+
+    private func initialiseDayCollectionView() {
+        dayCollectionView.dataSource = self
+        dayCollectionView.delegate = self
+        dayCollectionView.layer.masksToBounds = true
+        dayCollectionView.layer.cornerRadius = 4
+        dayCollectionView.hidden = true
         
+        dayCollectionView.frame = CGRectMake(5, fromDay.frame.maxY + 3, screenBounds.width - 10, 56)
     }
 
+    private func initialiseMonthCollectionView() {
+        monthCollectionView.dataSource = self
+        monthCollectionView.delegate = self
+        monthCollectionView.layer.masksToBounds = true
+        monthCollectionView.layer.cornerRadius = 4
+        monthCollectionView.hidden = true
+    }
+    
+    private func initialiseYearCollectionView() {
+        yearCollectionView.dataSource = self
+        yearCollectionView.delegate = self
+        yearCollectionView.layer.masksToBounds = true
+        yearCollectionView.layer.cornerRadius = 4
+        yearCollectionView.hidden = true
+    }
+    
     func tappedDateView(sender:UITapGestureRecognizer){
 
-        print("tappedDateView")
-        
         //if any other custom date picker elements are visible, hide them
         if (dayCollectionView.hidden == false) {dayCollectionView.hidden = true}
         if (monthCollectionView.hidden == false) {monthCollectionView.hidden = true}
@@ -125,11 +132,11 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
             let fromMaxY = fromMonth.bounds.maxY + monthCollectionView.bounds.height + fromMonth.bounds.height + 20
             let pos = CGPointMake(fromMidX, fromMaxY)
             monthCollectionView.center = pos
-            monthCollectionView.frame = CGRectMake(monthCollectionView.frame.minX, fromMonth.frame.maxY + 3, monthCollectionView.frame.width, monthCollectionView.frame.height + 15)
+            monthCollectionView.frame = CGRectMake(monthCollectionView.frame.minX, fromMonth.frame.maxY + 3, monthCollectionView.frame.width, monthCollectionView.frame.height + 10)
             monthCollectionView.hidden = false
         }
         if userDataLabel.accessibilityIdentifier == SourceDate.FromYear.rawValue {
-            yearCollectionView.frame = CGRectMake( fromYear.frame.maxX - yearCollectionView.frame.width, fromYear.frame.maxY + 13, yearCollectionView.frame.size.width, yearCollectionView.frame.size.height )
+            yearCollectionView.frame = CGRectMake( fromYear.frame.maxX - yearCollectionView.frame.width, fromYear.frame.maxY + 4, yearCollectionView.frame.size.width, yearCollectionView.frame.size.height )
             yearCollectionView.hidden = false
         }
 
@@ -138,36 +145,38 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     private func positionToViewLookupControls(userDataLabel: UILabel) {
 
         if userDataLabel.accessibilityIdentifier == SourceDate.ToDay.rawValue {
-            dayCollectionView.frame = CGRectMake(5, toDay.frame.maxY + 3, screenBounds.width - 10, 56)
+            dayCollectionView.frame = CGRectMake(5, toDay.frame.maxY + 1, screenBounds.width - 10, 56)
             dayCollectionView.hidden = false
         }
         if userDataLabel.accessibilityIdentifier == SourceDate.ToMonth.rawValue {
             let fromMidX = toMonth.frame.midX
             let fromMaxY = toMonth.frame.maxY + monthCollectionView.frame.height/2 + 3
             let pos = CGPointMake(fromMidX, fromMaxY)
-            
+            monthCollectionView.frame = CGRectMake(monthCollectionView.frame.minX, fromMonth.frame.maxY + 3, monthCollectionView.frame.width, monthCollectionView.frame.height + 15)
             monthCollectionView.center = pos
+
             monthCollectionView.hidden = false
         }
         if userDataLabel.accessibilityIdentifier == SourceDate.ToYear.rawValue {
             yearCollectionView.frame = CGRectMake( toYear.frame.maxX - yearCollectionView.frame.width, toYear.frame.maxY + 3, yearCollectionView.frame.size.width, yearCollectionView.frame.size.height )
-            
             yearCollectionView.hidden = false
         }
     }
 
-    
  
     @IBAction func tappedCalculateButton(sender: UIButton) {
         
         //build from date
         let fromDate = AJDate(theDay: convertToInt(fromDay.text!), theMonth: convertMonthStringToInt(fromMonth.text!), theYear: convertToInt(fromYear.text!))!
   
-       let toDate = AJDate(theDay: convertToInt(toDay.text!), theMonth: convertMonthStringToInt(toMonth.text!), theYear: convertToInt(toYear.text!))!
+        let toDate = AJDate(theDay: convertToInt(toDay.text!), theMonth: convertMonthStringToInt(toMonth.text!), theYear: convertToInt(toYear.text!))!
 
         let total = fromDate.numberOfDaysBetween(fromDate, toDate: toDate, excludeStartDate: true)
-        resultLabel.text = String(total) + (total > 1 ? " days" : " day")
-        print(total)
+        if ( total == 1) {
+            resultLabel.text = String(total) + " day"
+        } else {
+            resultLabel.text = String(total) + " days"
+        }
     }
    
     private func convertToInt(stringValue: String) -> Int {
@@ -238,7 +247,7 @@ extension ViewController: UICollectionViewDataSource {
 	
 
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-     
+        
         if collectionView == self.dayCollectionView {
             return daysOfMonth.count
         }
@@ -250,13 +259,12 @@ extension ViewController: UICollectionViewDataSource {
         if collectionView == self.yearCollectionView {
             return years.count
         }
-
         
         return 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        
+
         let cell = UICollectionViewCell()
         
         if collectionView == self.dayCollectionView {

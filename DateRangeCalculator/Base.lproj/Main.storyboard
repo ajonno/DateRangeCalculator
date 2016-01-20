@@ -21,6 +21,30 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ctk-3k-sO5">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Second Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLs-iZ-jTS">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="157" id="MIL-kf-P1A">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="183"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="27" id="VHb-wL-KkL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="MIL-kf-P1A"/>
+                                        <exclude reference="VHb-wL-KkL"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="MIL-kf-P1A"/>
+                                        <include reference="VHb-wL-KkL"/>
+                                    </mask>
+                                </variation>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter First Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RzN-lv-qWq">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -73,6 +97,35 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG1-9M-kjJ">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="toDay"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="ZPA-2D-kIt"/>
+                                    <constraint firstAttribute="height" constant="45" id="h7J-K4-cHc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ZPA-2D-kIt"/>
+                                        <exclude reference="h7J-K4-cHc"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ZPA-2D-kIt"/>
+                                        <include reference="h7J-K4-cHc"/>
+                                    </mask>
+                                </variation>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ytK-zj-imy">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -99,6 +152,35 @@
                                     <mask key="constraints">
                                         <include reference="DGL-va-1Sw"/>
                                         <include reference="fsR-md-gmw"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyo-uK-21H">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="toMonth"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Wsb-vZ-adp"/>
+                                    <constraint firstAttribute="height" constant="45" id="mnV-GD-ze6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Wsb-vZ-adp"/>
+                                        <exclude reference="mnV-GD-ze6"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Wsb-vZ-adp"/>
+                                        <include reference="mnV-GD-ze6"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -131,30 +213,35 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3w-Rx-JQe">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <color key="backgroundColor" red="0.7496067533557047" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2012" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hx-3I-OEs">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="toYear"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="MWA-uL-uDG"/>
+                                    <constraint firstAttribute="height" constant="45" id="8fF-PE-Faa"/>
+                                    <constraint firstAttribute="width" constant="66" id="OBn-Gv-4aa"/>
                                 </constraints>
-                                <state key="normal" title="Calculate Number of Days">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="MWA-uL-uDG"/>
+                                        <exclude reference="8fF-PE-Faa"/>
+                                        <exclude reference="OBn-Gv-4aa"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="23" y="722" width="355" height="46"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="MWA-uL-uDG"/>
+                                        <include reference="8fF-PE-Faa"/>
+                                        <include reference="OBn-Gv-4aa"/>
                                     </mask>
                                 </variation>
-                                <connections>
-                                    <action selector="tappedCalculateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HdT-lR-kV3"/>
-                                </connections>
-                            </button>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="32" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bYf-PT-UbY">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
@@ -390,117 +477,29 @@
                                     <outlet property="delegate" destination="8bC-Xf-vdC" id="04F-py-69f"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Second Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLs-iZ-jTS">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F3w-Rx-JQe">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.7496067533557047" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="157" id="MIL-kf-P1A">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="183"/>
-                                    </constraint>
-                                    <constraint firstAttribute="height" constant="27" id="VHb-wL-KkL"/>
+                                    <constraint firstAttribute="height" constant="46" id="MWA-uL-uDG"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <color key="textColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
+                                <state key="normal" title="Calculate Number of Days">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="MIL-kf-P1A"/>
-                                        <exclude reference="VHb-wL-KkL"/>
+                                        <exclude reference="MWA-uL-uDG"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
-                                        <include reference="MIL-kf-P1A"/>
-                                        <include reference="VHb-wL-KkL"/>
+                                        <include reference="MWA-uL-uDG"/>
                                     </mask>
                                 </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG1-9M-kjJ">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" identifier="toDay"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="ZPA-2D-kIt"/>
-                                    <constraint firstAttribute="height" constant="45" id="h7J-K4-cHc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="ZPA-2D-kIt"/>
-                                        <exclude reference="h7J-K4-cHc"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="ZPA-2D-kIt"/>
-                                        <include reference="h7J-K4-cHc"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyo-uK-21H">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" identifier="toMonth"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" id="Wsb-vZ-adp"/>
-                                    <constraint firstAttribute="height" constant="45" id="mnV-GD-ze6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Wsb-vZ-adp"/>
-                                        <exclude reference="mnV-GD-ze6"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="Wsb-vZ-adp"/>
-                                        <include reference="mnV-GD-ze6"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2012" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hx-3I-OEs">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <accessibility key="accessibilityConfiguration" identifier="toYear"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="8fF-PE-Faa"/>
-                                    <constraint firstAttribute="width" constant="66" id="OBn-Gv-4aa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="8fF-PE-Faa"/>
-                                        <exclude reference="OBn-Gv-4aa"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="8fF-PE-Faa"/>
-                                        <include reference="OBn-Gv-4aa"/>
-                                    </mask>
-                                </variation>
-                            </label>
+                                <connections>
+                                    <action selector="tappedCalculateButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HdT-lR-kV3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -536,28 +535,36 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ctk-3k-sO5" secondAttribute="bottom" constant="20" id="dme-L5-jcP">
                                 <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
                             </constraint>
-                            <constraint firstAttribute="trailingMargin" secondItem="F3w-Rx-JQe" secondAttribute="trailing" constant="5" id="dp1-aB-FyX"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="F3w-Rx-JQe" secondAttribute="bottom" constant="32" id="hLC-uD-c0H"/>
-                            <constraint firstItem="F3w-Rx-JQe" firstAttribute="top" secondItem="bYf-PT-UbY" secondAttribute="bottom" constant="43" id="miP-rb-R7L"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="F3w-Rx-JQe" secondAttribute="leading" id="xzL-Jj-ZIW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="F3w-Rx-JQe" secondAttribute="trailing" constant="5" id="dp1-aB-FyX">
+                                <variation key="heightClass=regular-widthClass=compact" constant="2"/>
+                            </constraint>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="F3w-Rx-JQe" secondAttribute="bottom" constant="32" id="hLC-uD-c0H">
+                                <variation key="heightClass=regular-widthClass=compact" constant="52"/>
+                            </constraint>
+                            <constraint firstItem="F3w-Rx-JQe" firstAttribute="top" secondItem="bYf-PT-UbY" secondAttribute="bottom" constant="43" id="miP-rb-R7L">
+                                <variation key="heightClass=regular-widthClass=compact" constant="23"/>
+                            </constraint>
+                            <constraint firstAttribute="leadingMargin" secondItem="F3w-Rx-JQe" secondAttribute="leading" id="xzL-Jj-ZIW">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-3"/>
+                            </constraint>
                             <constraint firstItem="2hx-3I-OEs" firstAttribute="leading" secondItem="jyo-uK-21H" secondAttribute="trailing" constant="38" id="yZ9-df-aHi"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="ctk-3k-sO5"/>
+                                <exclude reference="jLs-iZ-jTS"/>
                                 <exclude reference="RzN-lv-qWq"/>
                                 <exclude reference="9e2-5G-HFG"/>
+                                <exclude reference="rG1-9M-kjJ"/>
                                 <exclude reference="ytK-zj-imy"/>
+                                <exclude reference="jyo-uK-21H"/>
                                 <exclude reference="I7d-Iz-Mg9"/>
-                                <exclude reference="F3w-Rx-JQe"/>
+                                <exclude reference="2hx-3I-OEs"/>
                                 <exclude reference="bYf-PT-UbY"/>
                                 <exclude reference="hFo-W8-00N"/>
                                 <exclude reference="QRL-VE-zfX"/>
                                 <exclude reference="CEA-Tl-7el"/>
-                                <exclude reference="jLs-iZ-jTS"/>
-                                <exclude reference="rG1-9M-kjJ"/>
-                                <exclude reference="jyo-uK-21H"/>
-                                <exclude reference="2hx-3I-OEs"/>
+                                <exclude reference="F3w-Rx-JQe"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="00w-qq-eJf"/>
@@ -590,19 +597,19 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="ctk-3k-sO5"/>
+                                <include reference="jLs-iZ-jTS"/>
                                 <include reference="RzN-lv-qWq"/>
                                 <include reference="9e2-5G-HFG"/>
+                                <include reference="rG1-9M-kjJ"/>
                                 <include reference="ytK-zj-imy"/>
+                                <include reference="jyo-uK-21H"/>
                                 <include reference="I7d-Iz-Mg9"/>
-                                <include reference="F3w-Rx-JQe"/>
+                                <include reference="2hx-3I-OEs"/>
                                 <include reference="bYf-PT-UbY"/>
                                 <include reference="hFo-W8-00N"/>
                                 <include reference="QRL-VE-zfX"/>
                                 <include reference="CEA-Tl-7el"/>
-                                <include reference="jLs-iZ-jTS"/>
-                                <include reference="rG1-9M-kjJ"/>
-                                <include reference="jyo-uK-21H"/>
-                                <include reference="2hx-3I-OEs"/>
+                                <include reference="F3w-Rx-JQe"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="00w-qq-eJf"/>
