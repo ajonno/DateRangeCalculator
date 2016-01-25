@@ -8,7 +8,7 @@ import UIKit
 class ViewController: UIViewController, UIPopoverPresentationControllerDelegate {
 
     enum SourceDate : String {
-        case FromDay    = "fromDay"
+    	case FromDay    = "fromDay"
         case FromMonth  = "fromMonth"
         case FromYear   = "fromYear"
         case ToDay      = "toDay"
@@ -26,7 +26,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     private let month_year_height: CGFloat = 168
     private let day_height: CGFloat = 56
     
-    
 	@IBOutlet weak var dayCollectionView: UICollectionView!
     @IBOutlet weak var monthCollectionView: UICollectionView!
     @IBOutlet weak var yearCollectionView: UICollectionView!
@@ -40,14 +39,11 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
     @IBOutlet weak var toYear: UILabel!
 
     @IBOutlet weak var backgroundImage: UIImageView!
-    
     @IBOutlet weak var resultLabel: UILabel!
 
-	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-		
+
         //add labels that hold the dates user has chosen to array
         labelArray = [fromDay, fromMonth, fromYear, toDay, toMonth, toYear]
         
@@ -65,7 +61,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         let startYearPosition = years.indexOf(convertToInt(fromYear.text!))
         let indexPath = NSIndexPath(forRow: startYearPosition!, inSection: 0)
         yearCollectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .Top, animated: false)
-
 	}
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -75,9 +70,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
 	}
-
 
     private func initialiseDayCollectionView() {
         dayCollectionView.dataSource = self
@@ -110,7 +103,7 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
 
         yearCollectionView.layer.borderWidth = 2
         yearCollectionView.layer.borderColor = UIColor.whiteColor().CGColor
-}
+	}
     
     func tappedDateView(sender:UITapGestureRecognizer){
 
@@ -131,8 +124,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         if userDataLabel.accessibilityIdentifier == SourceDate.ToDay.rawValue || userDataLabel.accessibilityIdentifier == SourceDate.ToMonth.rawValue || userDataLabel.accessibilityIdentifier == SourceDate.ToYear.rawValue  {
             positionToViewLookupControls(userDataLabel)
         }
-
-       
     }
     
     private func positionFromViewLookupControls(userDataLabel: UILabel) {
@@ -152,9 +143,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         if userDataLabel.accessibilityIdentifier == SourceDate.FromYear.rawValue {
             yearCollectionView.frame = CGRectMake( fromYear.frame.maxX - yearCollectionView.frame.width, fromYear.frame.maxY + 3, yearCollectionView.frame.size.width, month_year_height)
             yearCollectionView.hidden = false
-            
-            print(yearCollectionView.frame)
-
         }
 
     }
@@ -187,10 +175,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         alert.addAction(UIAlertAction(title: "Oops", style: .Default, handler: nil))
 
         let fromDate = AJDate(theDay: convertToInt(fromDay.text!), theMonth: convertMonthStringToInt(fromMonth.text!), theYear: convertToInt(fromYear.text!))
-
         let toDate = AJDate(theDay: convertToInt(toDay.text!), theMonth: convertMonthStringToInt(toMonth.text!), theYear: convertToInt(toYear.text!))
 
-        
         guard let _ = fromDate else {
             alert.title = "First date is invalid"
             presentViewController(alert, animated: false, completion: nil)
@@ -213,10 +199,8 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
                 resultLabel.text = String(total) + " days"
             }
         }
-        
     }
     
-   
     private func convertToInt(stringValue: String) -> Int {
         if let intVersion = Int(stringValue) {
             return intVersion
@@ -235,7 +219,6 @@ class ViewController: UIViewController, UIPopoverPresentationControllerDelegate 
         }
         return monthValue
     }
-    
 }
 
 
