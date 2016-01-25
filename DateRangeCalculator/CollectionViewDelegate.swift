@@ -20,7 +20,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         
         if collectionView == self.dayCollectionView {
-            print("touched cell at indexPath \(indexPath.row) value is: \(String(daysOfMonth[indexPath.row]))")
             if userDataLabel.accessibilityIdentifier == SourceDate.FromDay.rawValue {
                 fromDay.text = (String(daysOfMonth[indexPath.row]))
             } else {
@@ -30,7 +29,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         }
         
         if collectionView == self.monthCollectionView {
-            print("touched cell at indexPath \(indexPath.row) value is: \(String(months[indexPath.row]))")
             if userDataLabel.accessibilityIdentifier == SourceDate.FromMonth.rawValue {
                 fromMonth.text = months[indexPath.row]
             } else {
@@ -40,7 +38,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         }
         
         if collectionView == self.yearCollectionView {
-            print("touched cell at indexPath \(indexPath.row) value is: \(String(years[indexPath.row]))")
             if userDataLabel.accessibilityIdentifier == SourceDate.FromYear.rawValue {
                 fromYear.text = String(years[indexPath.row])
             } else {
