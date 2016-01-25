@@ -153,8 +153,6 @@ struct AJDate {
 			totalDaysForAllOtherMonths += numberOfDaysInMonth(fromYear, theMonth: month)
 		}
 		
-		//TODO: this is currently NOT including the fromDay. so vs. web result this is 1 less
-		
 		return daysRemainingInFromMonth + totalDaysForAllOtherMonths
 	}
 	
@@ -189,8 +187,7 @@ struct AJDate {
             let finalResult = startAndEndYearAreDifferent(fromDate, toDate: toDate, excludeStartDate: excludeStartDate)
             return finalResult
 		}
-		
-		//TODO: no result - what is best way to handle this
+
 		return 0
 	}
 	
