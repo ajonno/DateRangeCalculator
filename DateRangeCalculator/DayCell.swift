@@ -12,12 +12,10 @@ class DayCell: UICollectionViewCell {
 	
 	@IBOutlet weak var dayLabel: UILabel!
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+	required init?(coder aDecoder: NSCoder) {
+        	super.init(coder: aDecoder)
         
-        self.layer.masksToBounds = true
-        self.layer.cornerRadius = 7
-        
-    }
-    
+        	self.layer.masksToBounds = true
+        	self.layer.cornerRadius = 7
+    	}
 }
