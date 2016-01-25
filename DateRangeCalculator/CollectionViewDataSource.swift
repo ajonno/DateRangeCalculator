@@ -10,7 +10,6 @@ import UIKit
 
 extension ViewController: UICollectionViewDataSource {
     
-    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if collectionView == self.dayCollectionView {
@@ -57,9 +56,5 @@ extension ViewController: UICollectionViewDataSource {
         }
         
         return cell
-        
     }
-    
-    
-    
 }
