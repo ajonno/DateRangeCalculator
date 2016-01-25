@@ -270,14 +270,14 @@ struct AJDate {
     }
     
     private func isCorrectDateOrderSequence(fromDate: AJDate, toDate: AJDate) -> Bool {
-		if (fromDate.year > toDate.year) {
-			return false
-		}
+	if (fromDate.year > toDate.year) {
+		return false
+	}
         if (fromDate.year == toDate.year) && (fromDate.month > toDate.month) {
-            return false
+        	return false
         }
         if (fromDate.year == toDate.year) && (fromDate.month == toDate.month)  &&  (fromDate.day > toDate.day){
-            return false
+        	return false
         }
 		return true
 	}
