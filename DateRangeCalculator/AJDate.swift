@@ -73,8 +73,6 @@ struct AJDate {
 		}
 	}
 
-	
-	
 	func isLeapYear(year: Int) -> Bool {
 		
 		guard (year-2000)%4 == 0 else {
@@ -168,118 +166,114 @@ struct AJDate {
 		return totalsDaysForAllMonthsExceptLast + toDay
 	}
 	
-	
 	func numberOfDaysBetween(fromDate: AJDate, toDate: AJDate, excludeStartDate: Bool) -> Int {
 		//case 1 - start and end yr/mth are the same
 		if (fromDate.year == toDate.year && fromDate.month == toDate.month) {
-            let finalResult = daysOnlyAreDifferent(fromDate, toDate: toDate, excludeStartDate: excludeStartDate)
-            return finalResult
+            		let finalResult = daysOnlyAreDifferent(fromDate, toDate: toDate, excludeStartDate: excludeStartDate)
+            		return finalResult
 		}
 		
 		//case 2 - start and end yr are the same, months are different
 		if (fromDate.year == toDate.year) {
-            let finalResult = monthsAndDaysAreDifferent(fromDate, toDate: toDate, excludeStartDate: excludeStartDate)
-            return finalResult
+            		let finalResult = monthsAndDaysAreDifferent(fromDate, toDate: toDate, excludeStartDate: excludeStartDate)
+            		return finalResult
 		}
 		
 		//case 3 - start and end year are different
 		if (fromDate.year != toDate.year) {
-            let finalResult = startAndEndYearAreDifferent(fromDate, toDate: toDate, excludeStartDate: excludeStartDate)
-            return finalResult
+            		let finalResult = startAndEndYearAreDifferent(fromDate, toDate: toDate, excludeStartDate: excludeStartDate)
+            		return finalResult
 		}
-
 		return 0
 	}
 	
-    private func daysOnlyAreDifferent(fromDate: AJDate, toDate: AJDate, excludeStartDate: Bool) -> Int {
+    	private func daysOnlyAreDifferent(fromDate: AJDate, toDate: AJDate, excludeStartDate: Bool) -> Int {
         
-        //first make sure the days are in sequence
-        var confirmedFromDate: AJDate = fromDate
-        var confirmedToDate: AJDate = toDate
+        	//first make sure the days are in sequence
+        	var confirmedFromDate: AJDate = fromDate
+        	var confirmedToDate: AJDate = toDate
         
-        if !isCorrectDateOrderSequence(fromDate, toDate: toDate) {
-            confirmedFromDate = toDate
-            confirmedToDate = fromDate
-        }
+        	if !isCorrectDateOrderSequence(fromDate, toDate: toDate) {
+            		confirmedFromDate = toDate
+            		confirmedToDate = fromDate
+        	}
         
-        var finalResult = (confirmedToDate.day - confirmedFromDate.day)
-        if excludeStartDate {
-            finalResult = (finalResult - 1) < 0 ? 0 : finalResult - 1
-        }
+        	var finalResult = (confirmedToDate.day - confirmedFromDate.day)
+        	if excludeStartDate {
+            		finalResult = (finalResult - 1) < 0 ? 0 : finalResult - 1
+        	}
 
-        return finalResult
-    }
+	        return finalResult
+    	}
     
-    private func monthsAndDaysAreDifferent(fromDate: AJDate, toDate: AJDate, excludeStartDate: Bool) -> Int {
-        //first make sure the months are in sequence
-        var confirmedFromDate: AJDate = fromDate
-        var confirmedToDate: AJDate = toDate
+    	private func monthsAndDaysAreDifferent(fromDate: AJDate, toDate: AJDate, excludeStartDate: Bool) -> Int {
+        	//first make sure the months are in sequence
+        	var confirmedFromDate: AJDate = fromDate
+        	var confirmedToDate: AJDate = toDate
         
-        if !isCorrectDateOrderSequence(fromDate, toDate: toDate) {
-            confirmedFromDate = toDate
-            confirmedToDate = fromDate
-        }
+	        if !isCorrectDateOrderSequence(fromDate, toDate: toDate) {
+	        	confirmedFromDate = toDate
+            		confirmedToDate = fromDate
+            	}
         
-        let firstMonthDays = confirmedFromDate.numberOfDaysUntilEndOfMonth
+        	let firstMonthDays = confirmedFromDate.numberOfDaysUntilEndOfMonth
         
-        //get in between (if there are any) months total days
-        let requiredFromToMonths = Array(confirmedFromDate.month...confirmedToDate.month)
+        	//get in between (if there are any) months total days
+        	let requiredFromToMonths = Array(confirmedFromDate.month...confirmedToDate.month)
         
-        var fullMonthsTotal: Int = 0
-        if requiredFromToMonths.count > 2 {
-            let fullMonthElements = requiredFromToMonths.dropFirst().dropLast()
-            for month in fullMonthElements {
-                fullMonthsTotal += numberOfDaysInMonth(confirmedFromDate.year, theMonth: month)
-            }
-        }
-        let finalResult = firstMonthDays + fullMonthsTotal + confirmedToDate.day
-        return excludeStartDate ? finalResult - 1 : finalResult
-    }
+        	var fullMonthsTotal: Int = 0
+        	if requiredFromToMonths.count > 2 {
+            		let fullMonthElements = requiredFromToMonths.dropFirst().dropLast()
+            		for month in fullMonthElements {
+                		fullMonthsTotal += numberOfDaysInMonth(confirmedFromDate.year, theMonth: month)
+            		}
+        	}
+        	let finalResult = firstMonthDays + fullMonthsTotal + confirmedToDate.day
+        	return excludeStartDate ? finalResult - 1 : finalResult
+    	}
     
-    private func startAndEndYearAreDifferent(fromDate: AJDate, toDate: AJDate, excludeStartDate: Bool) -> Int {
-        //make sure the years are in sequence (as per the BCG document - this test case
-        //has reverse date order
-        var confirmedFromDate: AJDate = fromDate
-        var confirmedToDate: AJDate = toDate
+    	private func startAndEndYearAreDifferent(fromDate: AJDate, toDate: AJDate, excludeStartDate: Bool) -> Int {
+        	//make sure the years are in sequence (as per the BCG document - this test case
+        	//has reverse date order
+        	var confirmedFromDate: AJDate = fromDate
+        	var confirmedToDate: AJDate = toDate
         
-        if !isCorrectDateOrderSequence(fromDate, toDate: toDate) {
-            confirmedFromDate = toDate
-            confirmedToDate = fromDate
-        }
+        	if !isCorrectDateOrderSequence(fromDate, toDate: toDate) {
+        		confirmedFromDate = toDate
+        		confirmedToDate = fromDate
+        	}
         
-        //get in between (if there are any) years total days
-        let requiredFromToYears = Array(confirmedFromDate.year...confirmedToDate.year)
+	        //get in between (if there are any) years total days
+        	let requiredFromToYears = Array(confirmedFromDate.year...confirmedToDate.year)
         
-        var inBetweenYearsTotal: Int = 0
-        if requiredFromToYears.count > 2 {
-            let fullYearElements = requiredFromToYears.dropFirst().dropLast()
-            for year in fullYearElements {
-                inBetweenYearsTotal += numberOfDaysInYear(year)
-            }
-        }
+	       	var inBetweenYearsTotal: Int = 0
+        	if requiredFromToYears.count > 2 {
+        		let fullYearElements = requiredFromToYears.dropFirst().dropLast()
+            		for year in fullYearElements {
+                		inBetweenYearsTotal += numberOfDaysInYear(year)
+            		}
+        	}
         
-        //now get the first years total days (ie. from start day/mth -> 31 Dec of that same year
-        let firstYearsTotalDays = confirmedFromDate.numberOfDaysUntilEndOfYear
+	        //now get the first years total days (ie. from start day/mth -> 31 Dec of that same year
+        	let firstYearsTotalDays = confirmedFromDate.numberOfDaysUntilEndOfYear
         
-        //now get the last years total days (ie. from 1 Jan -> end date)
-        let lastYearsTotalDays = confirmedToDate.numberOfDaysFromStartOfYear
+	        //now get the last years total days (ie. from 1 Jan -> end date)
+        	let lastYearsTotalDays = confirmedToDate.numberOfDaysFromStartOfYear
         
-        let finalResult = firstYearsTotalDays + inBetweenYearsTotal + lastYearsTotalDays
-        return excludeStartDate ? finalResult - 1 : finalResult
-
-    }
-    
-    private func isCorrectDateOrderSequence(fromDate: AJDate, toDate: AJDate) -> Bool {
-	if (fromDate.year > toDate.year) {
-		return false
+	        let finalResult = firstYearsTotalDays + inBetweenYearsTotal + lastYearsTotalDays
+        	return excludeStartDate ? finalResult - 1 : finalResult
 	}
-        if (fromDate.year == toDate.year) && (fromDate.month > toDate.month) {
-        	return false
-        }
-        if (fromDate.year == toDate.year) && (fromDate.month == toDate.month)  &&  (fromDate.day > toDate.day){
-        	return false
-        }
+    
+    	private func isCorrectDateOrderSequence(fromDate: AJDate, toDate: AJDate) -> Bool {
+		if (fromDate.year > toDate.year) {
+			return false
+		}
+		if (fromDate.year == toDate.year) && (fromDate.month > toDate.month) {
+        		return false
+        	}
+        	if (fromDate.year == toDate.year) && (fromDate.month == toDate.month)  &&  (fromDate.day > toDate.day){
+        		return false
+        	}
 		return true
 	}
-	
 }
