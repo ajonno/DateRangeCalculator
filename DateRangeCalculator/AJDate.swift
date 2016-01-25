@@ -157,7 +157,7 @@ struct AJDate {
 	}
 	
 	func numberOfDayFromStartOfYearTo(toYear: Int, toMonth: Int, toDay: Int) -> Int {
-		//let monthsToCalculateDaysFor = [Jan…toMonth]  EXCLUDE THE **TO** MONTH when building this array
+		
 		let monthsToCalculateDaysFor = gregorianMonths.dropLast(gregorianMonths.count - (toMonth - 1))
 		
 		var totalsDaysForAllMonthsExceptLast: Int = 0
