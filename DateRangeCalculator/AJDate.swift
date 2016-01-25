@@ -206,29 +206,29 @@ struct AJDate {
 	        return finalResult
     	}
     
-    	private func monthsAndDaysAreDifferent(fromDate: AJDate, toDate: AJDate, excludeStartDate: Bool) -> Int {
-        	//first make sure the months are in sequence
-        	var confirmedFromDate: AJDate = fromDate
-        	var confirmedToDate: AJDate = toDate
+    private func monthsAndDaysAreDifferent(fromDate: AJDate, toDate: AJDate, excludeStartDate: Bool) -> Int {
+        //first make sure the months are in sequence
+        var confirmedFromDate: AJDate = fromDate
+        var confirmedToDate: AJDate = toDate
         
-	        if !isCorrectDateOrderSequence(fromDate, toDate: toDate) {
-	        	confirmedFromDate = toDate
-            		confirmedToDate = fromDate
-            	}
+	    if !isCorrectDateOrderSequence(fromDate, toDate: toDate) {
+	    	confirmedFromDate = toDate
+       		confirmedToDate = fromDate
+        }
         
-        	let firstMonthDays = confirmedFromDate.numberOfDaysUntilEndOfMonth
+        let firstMonthDays = confirmedFromDate.numberOfDaysUntilEndOfMonth
         
-        	//get in between (if there are any) months total days
-        	let requiredFromToMonths = Array(confirmedFromDate.month...confirmedToDate.month)
+        //get in between (if there are any) months total days
+        let requiredFromToMonths = Array(confirmedFromDate.month...confirmedToDate.month)
         
-        	var fullMonthsTotal: Int = 0
-        	if requiredFromToMonths.count > 2 {
-            		let fullMonthElements = requiredFromToMonths.dropFirst().dropLast()
-            		for month in fullMonthElements {
-                		fullMonthsTotal += numberOfDaysInMonth(confirmedFromDate.year, theMonth: month)
-            		}
-        	}
-        	let finalResult = firstMonthDays + fullMonthsTotal + confirmedToDate.day
+        var fullMonthsTotal: Int = 0
+        if requiredFromToMonths.count > 2 {
+            let fullMonthElements = requiredFromToMonths.dropFirst().dropLast()
+            for month in fullMonthElements {
+                fullMonthsTotal += numberOfDaysInMonth(confirmedFromDate.year, theMonth: month)
+            }
+        }
+        let finalResult = firstMonthDays + fullMonthsTotal + confirmedToDate.day
         	return excludeStartDate ? finalResult - 1 : finalResult
     	}
     
@@ -249,9 +249,9 @@ struct AJDate {
 	       	var inBetweenYearsTotal: Int = 0
         	if requiredFromToYears.count > 2 {
         		let fullYearElements = requiredFromToYears.dropFirst().dropLast()
-            		for year in fullYearElements {
-                		inBetweenYearsTotal += numberOfDaysInYear(year)
-            		}
+            	for year in fullYearElements {
+               		inBetweenYearsTotal += numberOfDaysInYear(year)
+           		}
         	}
         
 	        //now get the first years total days (ie. from start day/mth -> 31 Dec of that same year
@@ -262,18 +262,18 @@ struct AJDate {
         
 	        let finalResult = firstYearsTotalDays + inBetweenYearsTotal + lastYearsTotalDays
         	return excludeStartDate ? finalResult - 1 : finalResult
-	}
+		}
     
     	private func isCorrectDateOrderSequence(fromDate: AJDate, toDate: AJDate) -> Bool {
-		if (fromDate.year > toDate.year) {
-			return false
-		}
-		if (fromDate.year == toDate.year) && (fromDate.month > toDate.month) {
+			if (fromDate.year > toDate.year) {
+				return false
+			}
+			if (fromDate.year == toDate.year) && (fromDate.month > toDate.month) {
         		return false
         	}
         	if (fromDate.year == toDate.year) && (fromDate.month == toDate.month)  &&  (fromDate.day > toDate.day){
         		return false
         	}
-		return true
-	}
+			return true
+		}
 }
