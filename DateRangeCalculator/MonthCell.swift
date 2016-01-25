@@ -17,8 +17,5 @@ class MonthCell: UICollectionViewCell {
         
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 7
-        
     }
-
-    
 }
